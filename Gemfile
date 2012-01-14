@@ -45,7 +45,7 @@ group :test, :development do
 
   if RUBY_PLATFORM =~ /darwin/i
     gem 'rb-fsevent'
-    gem 'growl_notify'
+    gem 'growl'
   end
 end
 # To use ActiveModel has_secure_password
