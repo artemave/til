@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Til
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #auth
+      - if current_user
+        = link_to "Sign Out", signout_path
+      - else
+        = link_to "Sign in with Twitter", "/auth/twitter"
+        - unless Rails.env.production?
+          = link_to "Dev sign in", "/auth/developer"
+
+    = yield

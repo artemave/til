@@ -5,6 +5,9 @@ Spork.prefork do
   require File.expand_path("../../../config/environment", __FILE__)
   require 'cucumber/rails'
   require 'factory_girl/step_definitions'
+  require_relative 'paths'
+
+  World(KnowsAboutPaths)
 
   Capybara.default_selector = :css
 end

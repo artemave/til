@@ -7,6 +7,8 @@ gem 'bson_ext'
 
 gem 'rails-backbone'
 gem 'haml-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 
 # Gems used only for assets and not required
@@ -22,6 +24,7 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
+  gem 'hpricot' # for html2haml
   gem 'launchy'
   gem 'awesome_print'
   gem 'pry'

@@ -1,4 +1,8 @@
 Til::Application.routes.draw do
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match "/signout" => "sessions#destroy", :as => :signout
+
+  root to: 'home#bootstrap'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
