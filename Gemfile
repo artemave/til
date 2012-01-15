@@ -9,6 +9,7 @@ gem 'rails-backbone'
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'thin'
 
 
 # Gems used only for assets and not required
