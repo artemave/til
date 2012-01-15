@@ -46,10 +46,8 @@ group :test, :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'capybara-firebug'
 
-  if RUBY_PLATFORM =~ /darwin/i
-    gem 'rb-fsevent'
-    gem 'growl'
-  end
+  gem 'rb-fsevent'
+  gem 'growl'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
