@@ -7,6 +7,6 @@ Feature: add TIL
     Given I am signed in
 
   Scenario: Create TIL
-    Given I view my TILs
-    When I create new TIL with title "mockito delay()" and content "that mockito has got awesome handling of async verification with delay()"
-    Then list of my TILs should have "mockito delay()" with content "that mockito has got awesome handling of async verification with delay()"
+    Given today I learned that "mockito has got awesome handling of async verifications with delay()"
+    When I save this fact in a TIL
+    Then list of my TILs should include "mockito has got awesome handling of async verifications with delay()"
