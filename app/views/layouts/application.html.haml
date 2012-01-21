@@ -8,7 +8,10 @@
   %body
     #auth
       - if current_user
-        = link_to "Sign Out", signout_path
+        %span
+          Hey, #{current_user.name}
+          |
+          = link_to "Sign Out", signout_path
       - else
         = link_to "Sign in with Twitter", "/auth/twitter"
         - unless Rails.env.production?
