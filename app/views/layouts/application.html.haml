@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #auth
+    #auth_bar
       - if current_user
         %span
           Hey, #{current_user.name}

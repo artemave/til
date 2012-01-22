@@ -7,7 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require stacktrace-min-0.3
+//= require hamlcoffee
 //= require backbone
+//= require backbone.authtokenadapter
+//= require backbone-forms
+//= require jquery-ui-editors
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/til

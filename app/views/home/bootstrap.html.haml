@@ -1,2 +1,5 @@
-%h1 Home#bootstrap
-%p Find me in app/views/home/bootstrap.html.haml
+- if current_user
+  :javascript
+    window.Til.init()
+- else
+  Howdy, Guest!
