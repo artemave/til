@@ -4,16 +4,16 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Til =
+window.TilApp =
   Models: {}
   Collections: {}
   Routers: {}
   Views: {}
 
   init: (tils = []) ->
-    @tilsCollection = new Til.Collections.TilsCollection(tils)
+    @tilsCollection = new TilApp.Collections.TilsCollection(tils)
 
-    new Til.Routers.TilsRouter()
+    new TilApp.Routers.TilsRouter()
 
     if not Backbone.history.started
       Backbone.history.start()

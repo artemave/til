@@ -1,6 +1,6 @@
-class Til.Models.Til extends Backbone.Model
+class TilApp.Models.Til extends Backbone.Model
   paramRoot: 'til'
 
-class Til.Collections.TilsCollection extends Backbone.Collection
-  model: Til.Models.Til
+class TilApp.Collections.TilsCollection extends Backbone.Collection
+  model: TilApp.Models.Til
   url: '/tils'

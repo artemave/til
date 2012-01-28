@@ -1,19 +1,19 @@
 describe "Til", ->
   describe "init", ->
     it 'initializes TILs collection', ->
-      Til.init([{content: "awesome"}, {content: "blah"}])
+      TilApp.init([{content: "awesome"}, {content: "blah"}])
 
-      expect(Til.tilsCollection).toBeDefined()
-      expect(Til.tilsCollection.length).toEqual(2)
-      expect(Til.tilsCollection.models[0].get('content')).toEqual("awesome")
-      expect(Til.tilsCollection.models[1].get('content')).toEqual("blah")
+      expect(TilApp.tilsCollection).toBeDefined()
+      expect(TilApp.tilsCollection.length).toEqual(2)
+      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("awesome")
+      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
 
     it 'creates router', ->
-      Til.Routers.TilsRouter = this.spy()
-      Til.init()
-      expect(Til.Routers.TilsRouter).toHaveBeenCalled()
+      TilApp.Routers.TilsRouter = this.spy()
+      TilApp.init()
+      expect(TilApp.Routers.TilsRouter).toHaveBeenCalled()
 
     it 'starts backbone history', ->
       Backbone.history = { start: this.spy() }
-      Til.init()
+      TilApp.init()
       expect(Backbone.history.start).toHaveBeenCalled()

@@ -1,4 +1,4 @@
-class Til.Routers.TilsRouter extends Backbone.Router
+class TilApp.Routers.TilsRouter extends Backbone.Router
   initialize: (options) ->
 
   routes:
