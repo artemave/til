@@ -5,3 +5,4 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     "": "index"
   
   index: ->
+    new TilApp.Views.TilsIndex()
