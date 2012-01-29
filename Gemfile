@@ -6,6 +6,8 @@ gem 'mongoid'
 gem 'bson_ext'
 
 gem 'rails-backbone'
+gem 'backbone-support'
+gem 'ejs'
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'

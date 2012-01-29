@@ -10,10 +10,12 @@
 //= require stacktrace-min-0.3
 //= require hamlcoffee
 //= require backbone
+//= require backbone-support
 //= require backbone.authtokenadapter
 //= require backbone-forms
 //= require jquery-ui-editors
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/til
+//= require_tree ../templates
 //= require_tree .

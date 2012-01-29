@@ -3,3 +3,4 @@ class TilApp.Views.TilsIndex extends Backbone.View
 
   render: ->
     $(@el).html(JST['tils/index']())
+    $('body').append(@el)
