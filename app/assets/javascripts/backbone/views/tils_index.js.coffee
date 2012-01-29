@@ -1,6 +1,16 @@
-class TilApp.Views.TilsIndex extends Backbone.View
+class TilApp.Views.TilsIndex extends Support.CompositeView
   id: 'tils'
 
   render: ->
-    $(@el).html(JST['tils/index']())
+    @renderTemplate()
+    @renderTils()
     $('body').append(@el)
+
+  renderTemplate: ->
+    $(@el).html(JST['tils/index']())
+
+  renderTils: ->
+    @collection.each (til) =>
+      row = new TilApp.Views.TilItem(model: til)
+      @renderChild(row)
+      @$('tbody').append(row.el)
