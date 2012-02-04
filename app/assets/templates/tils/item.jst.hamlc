@@ -1,2 +1,1 @@
-%tr
-  %td= model.get('content')
+%td= @model.get('content')

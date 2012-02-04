@@ -1,4 +1,7 @@
 describe "TilApp.Views.TilsIndex", ->
+  beforeEach ->
+    $('#main').html('')
+
   it "creates tils table", ->
     view = new TilApp.Views.TilsIndex()
     view.render()
@@ -9,8 +12,8 @@ describe "TilApp.Views.TilsIndex", ->
 
   it "shows tils in tils table", ->
     tils = new TilApp.Collections.TilsCollection [
-      content: 'sparrow is an excellent email client with seamless gmail support',
-      content: 'alfred is a nice spotlite alternative'
+      { content: 'sparrow is an excellent email client with seamless gmail support' },
+      { content: 'alfred is a nice spotlite alternative' }
     ]
     view = new TilApp.Views.TilsIndex(collection: tils)
     view.render()
