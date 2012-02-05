@@ -5,4 +5,4 @@ describe 'TilApp.Views.TilForm', ->
 
     expect($el).toHaveText(/Today I learned that/)
     expect($el).toContain('textarea')
-    expect($el).toContain("input[type='submit'][value='stash']")
+    expect($el).toContain("input[type='submit'][value='Save']")

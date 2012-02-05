@@ -1,3 +1,0 @@
-%label{for: 'new_til_content'} Today I learned that
-%textarea{id: 'new_til_content'}
-%input{type: 'submit', value: 'Save'}

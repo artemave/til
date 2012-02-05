@@ -2,7 +2,9 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
   id: 'tils'
 
   initialize: (opts = {})->
-    @collection = opts.collection || []
+    @collection = opts.collection || new TilApp.Collections.TilsCollection()
+    _.bindAll(this, 'render')
+    @collection.bind('add', @render)
 
   render: ->
     @renderTemplate()

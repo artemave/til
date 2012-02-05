@@ -29,3 +29,7 @@ Then /^my list of tils should include the following:$/ do |table|
     end
   end
 end
+
+Then /^list of my TILs should include "([^"]*)"$/ do |content|
+  page.should have_content content
+end
