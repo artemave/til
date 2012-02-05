@@ -5,5 +5,5 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     "": "index"
   
   index: ->
-    view = new TilApp.Views.TilsIndex()
+    view = new TilApp.Views.TilsIndex(collection: TilApp.tilsCollection)
     view.render()

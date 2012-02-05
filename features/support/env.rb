@@ -10,6 +10,7 @@ Spork.prefork do
   World(KnowsAboutPaths)
 
   Capybara.default_selector = :css
+  Capybara.default_driver = :selenium
 end
  
 Spork.each_run do
