@@ -5,6 +5,7 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  require 'active_support/testing/assertions'
   require 'rspec/autorun'
   require 'database_cleaner'
   require 'awesome_print'
@@ -20,6 +21,8 @@ Spork.prefork do
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
+
+    config.include ActiveSupport::Testing::Assertions
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of

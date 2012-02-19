@@ -31,5 +31,6 @@ Then /^my list of tils should include the following:$/ do |table|
 end
 
 Then /^list of my TILs should include "([^"]*)"$/ do |content|
+  Til.exists?(conditions: { content: content }).should == true
   page.should have_content content
 end
