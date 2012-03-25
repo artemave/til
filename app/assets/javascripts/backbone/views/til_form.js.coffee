@@ -8,9 +8,11 @@ class TilApp.Views.TilForm extends Support.CompositeView
 
     $(@el)
       .html(form.render().el)
-      .append($('<input>', type: 'submit', value: 'Save'))
+      .find('form')
+      .append($('<button>', class: 'btn', type: 'submit', text: 'Save'))
 
-    @$('input[type="submit"]').bind 'click', ->
+    @$('button[type="submit"]').bind 'click', ->
       TilApp.tilsCollection.create form.getValue()
+      false
 
     this
