@@ -1,4 +1,4 @@
-%table
+%table#tils_index
   %thead
     %tr
       %th Content

@@ -11,6 +11,6 @@ class TilApp.Views.TilForm extends Support.CompositeView
       .append($('<input>', type: 'submit', value: 'Save'))
 
     @$('input[type="submit"]').bind 'click', ->
-      TilApp.tilsCollection.add form.getValue()
+      TilApp.tilsCollection.create form.getValue()
 
     this

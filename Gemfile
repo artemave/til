@@ -9,6 +9,7 @@ gem 'rails-backbone'
 gem 'backbone-support'
 gem 'ejs'
 gem 'haml-rails'
+gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'thin'
@@ -24,18 +25,13 @@ group :assets do
   gem 'execjs'
 end
 
-gem 'jquery-rails'
-
 group :test, :development do
   gem 'hpricot' # for html2haml
   gem 'launchy'
   gem 'awesome_print'
   gem 'pry'
   gem 'pry-doc'
-  gem 'mongoid-rspec'
   gem 'turn', '~> 0.8.3', :require => false
-  gem 'cucumber-rails'
-  gem 'rspec-rails'
   gem 'spork', '~> 0.9.0.rc'
   gem 'guard-spork'
   gem 'guard-cucumber'
@@ -43,14 +39,19 @@ group :test, :development do
   gem 'guard-bundler'
   gem 'guard-jasmine'
   gem 'jasminerice'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'capybara-firebug'
+  gem 'rb-fsevent'
+  gem 'growl'
+end
+
+group :test do
+  gem 'mongoid-rspec'
+  gem 'cucumber-rails', require: false
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'capybara-firebug'
-
-  gem 'rb-fsevent'
-  gem 'growl'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
