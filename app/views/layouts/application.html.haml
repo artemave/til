@@ -12,9 +12,11 @@
           %a.btn.btn-navbar{:'data-toggle' => 'collapse', :'data-target' => '.collapse'}
             %span.icon-bar
           %a.brand{href: '#'} Bag of Nails
-          - if current_user
-            %span= current_user.name
           .nav-collapse
+            %ul.nav
+              - if current_user
+                %li
+                  %a{href: '#'}= current_user.name
             %ul.nav.pull-right
               %li
                 - if current_user

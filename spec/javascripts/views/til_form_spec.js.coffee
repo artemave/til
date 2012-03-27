@@ -3,6 +3,5 @@ describe 'TilApp.Views.TilForm', ->
     new_til = new TilApp.Views.TilForm()
     $el = $(new_til.render().el)
 
-    expect($el).toHaveText(/Today I learned that/)
     expect($el).toContain('textarea')
-    expect($el).toContain("input[type='submit'][value='Save']")
+    expect($el.find('button[type="submit"]')).toHaveText(/Save/)

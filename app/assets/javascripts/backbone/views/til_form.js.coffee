@@ -3,13 +3,12 @@ class TilApp.Views.TilForm extends Support.CompositeView
     form = new Backbone.Form
       schema:
         content:
-          type: 'TextArea'
-          title: 'Today I learned that'
+          template: 'pagedown'
 
     $(@el)
       .html(form.render().el)
       .find('form')
-      .append($('<button>', class: 'btn', type: 'submit', text: 'Save'))
+      .append($('<button>', class: 'btn btn-primary', type: 'submit', text: 'Save'))
 
     @$('button[type="submit"]').bind 'click', ->
       TilApp.tilsCollection.create form.getValue()

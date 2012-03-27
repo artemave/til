@@ -19,6 +19,14 @@
           <div class="help-block">{{help}}</div>\
         </div>\
       </div>\
+    ',
+
+    pagedown: '\
+      <div class="wmd-panel">\
+        <div id="wmd-button-bar"></div>\
+        <textarea class="wmd-input" id="wmd-input"></textarea>\
+      </div>\
+      <div id="wmd-preview" class="wmd-panel wmd-preview"></div>\
     '
   };
   

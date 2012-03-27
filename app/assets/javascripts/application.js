@@ -18,6 +18,9 @@
 //= require jquery-ui-editors
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require Markdown.Converter
+//= require Markdown.Sanitizer
+//= require Markdown.Editor
 //= require backbone/til
 //= require_tree ../templates
 //= require_tree .
