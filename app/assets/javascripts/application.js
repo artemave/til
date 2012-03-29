@@ -13,9 +13,6 @@
 //= require backbone
 //= require backbone-support
 //= require backbone.authtokenadapter
-//= require backbone-forms
-//= require bf-bootstrap
-//= require jquery-ui-editors
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require Markdown.Converter

@@ -1,0 +1,5 @@
+.wmd-panel
+  #wmd-button-bar
+  %textarea#wmd-input.wmd-input
+#wmd-preview.wmd-panel.wmd-preview
+%button.btn.btn-primary{type: 'submit'} Save

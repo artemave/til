@@ -1,5 +1,6 @@
 class TilApp.Views.TilsIndex extends Support.CompositeView
   id: 'tils'
+  className: 'span3'
 
   initialize: (opts = {})->
     @collection = opts.collection || new TilApp.Collections.TilsCollection()
