@@ -1,5 +1,8 @@
 class TilApp.Views.TilForm extends Support.CompositeView
-  className: 'span9'
+  className: 'span8'
+
+  events:
+    "load_pagedown_editor": "load_pagedown_editor"
 
   render: ->
     @$el.html(JST['tils/form']())
@@ -10,12 +13,12 @@ class TilApp.Views.TilForm extends Support.CompositeView
 
       false
 
-    $(document).on 'load_pagedown_editor', =>
-      if @$el.is(':visible')
-        convertor = Markdown.getSanitizingConverter()
-        editor = new Markdown.Editor(convertor)
-        editor.run()
-
-
     this
+
+  load_pagedown_editor: ->
+    if @$el.is(':visible')
+      convertor = Markdown.getSanitizingConverter()
+      editor = new Markdown.Editor(convertor)
+      editor.run()
+
 

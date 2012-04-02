@@ -1,5 +1,5 @@
-%table#tils_index
+%table#tils_index.table
   %thead
     %tr
-      %th Content
+      %th Notes
   %tbody

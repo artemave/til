@@ -1,6 +1,6 @@
 class TilApp.Views.TilsIndex extends Support.CompositeView
   id: 'tils'
-  className: 'span3'
+  className: 'span4'
 
   initialize: (opts = {})->
     @collection = opts.collection || new TilApp.Collections.TilsCollection()
@@ -9,7 +9,6 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
 
   render: ->
     @renderTemplate()
-    @renderNewTilForm()
     if @collection.length > 0
       @renderTils()
 
@@ -17,11 +16,6 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
 
   renderTemplate: ->
     $(@el).html(JST['tils/index']())
-
-  renderNewTilForm: ->
-    new_til_form = new TilApp.Views.TilForm()
-    @renderChild(new_til_form)
-    $(@el).prepend(new_til_form.el)
 
   renderTils: ->
     @collection.each (til) =>
