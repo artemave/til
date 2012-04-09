@@ -5,10 +5,13 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
 
   routes:
     "": "index"
+    "new": "new"
+
+  new: ->
+    @createNewTilForm()
   
   index: ->
     @createTilsIndex()
-    @createNewTilForm()
 
   createTilsIndex: ->
     index = new TilApp.Views.TilsIndex(collection: TilApp.tilsCollection)

@@ -16,9 +16,9 @@ Given /^today I learned that "([^"]*)"$/ do |piece_of_knowledge|
   @piece_of_knowledge = piece_of_knowledge
 end
 
-When /^I save this fact in a TIL$/ do
-  visit root_path
-  fill_in "Today I learned that", with: @piece_of_knowledge
+When /^I add new TIL$/ do
+  click_button "New"
+  fill_in "wmd-input", with: @piece_of_knowledge
   click_button "Save"
 end
 

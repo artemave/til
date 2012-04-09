@@ -8,5 +8,6 @@ Feature: add TIL
 
   Scenario: Create TIL
     Given today I learned that "mockito has got awesome handling of async verifications with delay()"
-    When I save this fact in a TIL
+    When I add new TIL
     Then list of my TILs should include "mockito has got awesome handling of async verifications with delay()"
+
