@@ -1,8 +1,9 @@
-class Tillit.Routers.MenuRouter extends Support.SwappingRouter
+class TilApp.Routers.MenuRouter extends Backbone.Router
   initialize: (options) ->
+    @menu_view = new TilApp.Views.Menu()
 
   routes:
     "": "index"
   
   index: ->
-    @swap(new MenuView(new: true))
+    @menu_view.render()

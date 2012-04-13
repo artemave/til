@@ -4,7 +4,7 @@ describe "TilApp.Views.TilsIndex", ->
     view = new TilApp.Views.TilsIndex()
     $el = $(view.render().el)
 
-    expect($el).toBe("#tils.span3")
+    expect($el).toBe("#tils.span4")
     expect($el).toContain('table')
 
   it "shows tils in tils table", ->

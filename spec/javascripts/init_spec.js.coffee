@@ -8,10 +8,15 @@ describe "Til", ->
       expect(TilApp.tilsCollection.models[0].get('content')).toEqual("awesome")
       expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
 
-    it 'creates router', ->
+    it 'creates tils router', ->
       TilApp.Routers.TilsRouter = this.spy()
       TilApp.init()
       expect(TilApp.Routers.TilsRouter).toHaveBeenCalled()
+
+    it 'creates menu router', ->
+      TilApp.Routers.MenuRouter = this.spy()
+      TilApp.init()
+      expect(TilApp.Routers.MenuRouter).toHaveBeenCalled()
 
     it 'starts backbone history', ->
       Backbone.history = { start: this.spy() }

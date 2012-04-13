@@ -6,18 +6,18 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #auth_bar.navbar.navbar-fixed-top
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
           %a.btn.btn-navbar{:'data-toggle' => 'collapse', :'data-target' => '.collapse'}
             %span.icon-bar
           %a.brand{href: '#'} Bag of Nails
           .nav-collapse
-            %ul.nav
+            %ul.nav#til_button_bar
+            %ul.nav.pull-right
               - if current_user
                 %li
                   %a{href: '#'}= current_user.name
-            %ul.nav.pull-right
               %li
                 - if current_user
                   = link_to "Sign Out", signout_path
