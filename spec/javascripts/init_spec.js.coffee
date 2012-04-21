@@ -9,11 +9,11 @@ describe "Til", ->
       expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
 
     it 'creates tils router', ->
-      TilApp.Routers.TilsRouter = this.spy()
+      TilApp.Routers.TilsRouter = @spy()
       TilApp.init()
       expect(TilApp.Routers.TilsRouter).toHaveBeenCalled()
 
     it 'starts backbone history', ->
-      Backbone.history = { start: this.spy() }
+      Backbone.history = { start: @spy() }
       TilApp.init()
       expect(Backbone.history.start).toHaveBeenCalled()

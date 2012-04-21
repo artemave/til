@@ -39,7 +39,7 @@ end
 
 Then /^I should see the content of the last one$/ do
   last_modified_til = Til.asc(:updated_at).last
-  within "##{last_modified_til.id}_til" do
+  within "##{last_modified_til.id}_til_full" do
     page.should have_content last_modified_til.content
   end
 end
