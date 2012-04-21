@@ -36,3 +36,10 @@ Then /^list of my TILs should include "([^"]*)"$/ do |content|
     page.should have_content content
   end
 end
+
+Then /^I should see the content of the last one$/ do
+  last_modified_til = Til.asc(:updated_at).last
+  within "##{last_modified_til.id}_til" do
+    page.should have_content last_modified_til.content
+  end
+end
