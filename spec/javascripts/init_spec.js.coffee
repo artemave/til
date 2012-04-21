@@ -13,11 +13,6 @@ describe "Til", ->
       TilApp.init()
       expect(TilApp.Routers.TilsRouter).toHaveBeenCalled()
 
-    it 'creates menu router', ->
-      TilApp.Routers.MenuRouter = this.spy()
-      TilApp.init()
-      expect(TilApp.Routers.MenuRouter).toHaveBeenCalled()
-
     it 'starts backbone history', ->
       Backbone.history = { start: this.spy() }
       TilApp.init()

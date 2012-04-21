@@ -14,7 +14,6 @@ window.TilApp =
     @tilsCollection = new TilApp.Collections.TilsCollection(tils)
 
     new TilApp.Routers.TilsRouter()
-    new TilApp.Routers.MenuRouter()
 
     if not Backbone.history.started
       Backbone.history.start()

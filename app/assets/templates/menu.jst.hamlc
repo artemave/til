@@ -1,2 +1,2 @@
 %li
-  %a New
+  %a{href: '#new'} New

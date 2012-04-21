@@ -17,7 +17,7 @@ Given /^today I learned that "([^"]*)"$/ do |piece_of_knowledge|
 end
 
 When /^I add new TIL$/ do
-  click_button "New"
+  click_link "New"
   fill_in "wmd-input", with: @piece_of_knowledge
   click_button "Save"
 end

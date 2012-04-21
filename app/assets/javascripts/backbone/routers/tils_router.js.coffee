@@ -2,6 +2,8 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
   _main_row_selector = '#main .row'
 
   initialize: (options) ->
+    @menu_view = new TilApp.Views.Menu()
+    @createTilsIndex()
 
   routes:
     "": "index"
@@ -11,7 +13,7 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     @createNewTilForm()
   
   index: ->
-    @createTilsIndex()
+    @menu_view.render()
 
   createTilsIndex: ->
     index = new TilApp.Views.TilsIndex(collection: TilApp.tilsCollection)
