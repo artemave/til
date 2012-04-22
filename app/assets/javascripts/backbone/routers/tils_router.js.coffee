@@ -1,8 +1,9 @@
 class TilApp.Routers.TilsRouter extends Backbone.Router
   _main_row_selector = '#main .row'
 
-  initialize: (options) ->
-    @menu_view = new TilApp.Views.Menu()
+  initialize: (options = {}) ->
+    menu_factory = options.menu_factory || new TilApp.Views.Menu.Factory
+    @menu_view = menu_factory.create()
     @menu_view.render()
     @createTilsIndex()
 
@@ -37,3 +38,8 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     if last_modified_til
       @show_til_view = new TilApp.Views.ShowTil(til: last_modified_til)
       $(_main_row_selector).append(@show_til_view.render().el)
+
+  @Factory: ->
+    create: (opts = {}) ->
+      new TilsRouter(opts)
+

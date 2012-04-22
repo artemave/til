@@ -1,5 +1,10 @@
 describe "Til", ->
   describe "init", ->
+    tils_router_factory = null
+
+    beforeEach ->
+      tils_router_factory = { create: sinon.spy() }
+
     it 'initializes TILs collection', ->
       TilApp.init([{content: "awesome"}, {content: "blah"}])
 
@@ -9,11 +14,11 @@ describe "Til", ->
       expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
 
     it 'creates tils router', ->
-      TilApp.Routers.TilsRouter = @spy()
-      TilApp.init()
-      expect(TilApp.Routers.TilsRouter).toHaveBeenCalled()
+      TilApp.init([], {tils_router_factory: tils_router_factory})
+      expect(tils_router_factory.create).toHaveBeenCalled()
 
     it 'starts backbone history', ->
-      Backbone.history = { start: @spy() }
-      TilApp.init()
-      expect(Backbone.history.start).toHaveBeenCalled()
+      history = { start: @spy() }
+
+      TilApp.init([], {tils_router_factory: tils_router_factory, history: history})
+      expect(history.start).toHaveBeenCalled()

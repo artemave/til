@@ -4,3 +4,7 @@ class TilApp.Views.Menu extends Backbone.View
   render: ->
     @$el.html(JST['menu']())
     @
+
+  @Factory: ->
+    create: ->
+      new TilApp.Views.Menu()

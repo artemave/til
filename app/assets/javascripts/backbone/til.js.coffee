@@ -10,11 +10,13 @@ window.TilApp =
   Routers: {}
   Views: {}
 
-  init: (tils = []) ->
-    @tilsCollection = new TilApp.Collections.TilsCollection(tils)
+  init: (tils, opts = {}) ->
+    @tilsCollection = new TilApp.Collections.TilsCollection(tils || [])
+    
+    ( opts.tils_router_factory || new TilApp.Routers.TilsRouter.Factory ).create()
 
-    new TilApp.Routers.TilsRouter()
+    history = opts.history || Backbone.history
 
-    if not Backbone.history.started
-      Backbone.history.start()
-      Backbone.history.started = true
+    if not history.started
+      history.start()
+      history.started = true
