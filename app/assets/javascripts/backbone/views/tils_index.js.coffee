@@ -11,8 +11,7 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
     @renderTemplate()
     if @collection.length > 0
       @renderTils()
-
-    this
+    @
 
   renderTemplate: ->
     $(@el).html(JST['tils/index']())
@@ -22,3 +21,7 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
       row = new TilApp.Views.TilsIndexItem(model: til)
       @renderChild(row)
       @$('tbody').append(row.el)
+
+  @Factory: ->
+    create: (opts = {}) ->
+      new TilsIndex(opts)

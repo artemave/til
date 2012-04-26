@@ -7,4 +7,4 @@ class TilApp.Views.Menu extends Backbone.View
 
   @Factory: ->
     create: ->
-      new TilApp.Views.Menu()
+      new Menu

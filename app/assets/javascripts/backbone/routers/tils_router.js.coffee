@@ -5,7 +5,10 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     menu_factory = options.menu_factory || new TilApp.Views.Menu.Factory
     @menu_view = menu_factory.create()
     @menu_view.render()
-    @createTilsIndex()
+
+    tils_index_factory = options.tils_index_factory || new TilApp.Views.TilsIndex.Factory
+    @tils_index_view = tils_index_factory.create(collection: TilApp.tilsCollection)
+    $(_main_row_selector).append(@tils_index_view.render())
 
   routes:
     "": "index"
@@ -16,10 +19,6 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
   
   index: ->
     @showLastModifiedTil()
-
-  createTilsIndex: ->
-    index = new TilApp.Views.TilsIndex(collection: TilApp.tilsCollection)
-    $(_main_row_selector).append(index.render().el)
 
   createNewTilForm: ->
     if @show_til_view

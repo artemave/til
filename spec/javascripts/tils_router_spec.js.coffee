@@ -8,6 +8,11 @@ describe 'TilApp.Routers.TilsRouter', ->
       expect(menu.render).toHaveBeenCalled()
 
     it 'creates tils index', ->
+      tils_index = { render: @spy() }
+      tils_index_factory = { create: @stub().withArgs(collection: TilApp.tilsCollection).returns(tils_index) }
+
+      new TilApp.Routers.TilsRouter(tils_index_factory: tils_index_factory)
+      expect(tils_index.render).toHaveBeenCalled()
 
   describe '#index', ->
     it 'shows last modified til', ->
