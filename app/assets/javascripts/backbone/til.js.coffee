@@ -9,14 +9,22 @@ window.TilApp =
   Collections: {}
   Routers: {}
   Views: {}
+  bodySelector: '#main .row'
 
-  init: (tils, opts = {}) ->
-    @tilsCollection = new TilApp.Collections.TilsCollection(tils || [])
+  init: (opts = {}) ->
+    @tilsCollection = new TilApp.Collections.TilsCollection(opts.tils || [])
     
     ( opts.tils_router_factory || new TilApp.Routers.TilsRouter.Factory ).create()
 
-    history = opts.history || Backbone.history
+    menu_factory = opts.menu_factory || new TilApp.Views.Menu.Factory
+    @menu_view = menu_factory.create()
+    @menu_view.render()
 
+    tils_index_factory = opts.tils_index_factory || new TilApp.Views.TilsIndex.Factory
+    @tils_index_view = tils_index_factory.create(collection: @tilsCollection)
+    $(@bodySelector).append(@tils_index_view.render().el)
+
+    history = opts.history || Backbone.history
     if not history.started
       history.start()
       history.started = true

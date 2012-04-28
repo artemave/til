@@ -1,7 +1,7 @@
 - if current_user
   :javascript
     $(function() {
-      window.TilApp.init(#{Til.all.to_json});
+      window.TilApp.init({tils: #{Til.all.to_json}});
     });
 - else
   Howdy, Stranger!
