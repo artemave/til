@@ -5,8 +5,8 @@ describe "Til", ->
 
       expect(TilApp.tilsCollection).toBeDefined()
       expect(TilApp.tilsCollection.length).toEqual(2)
-      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("awesome")
-      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
+      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("blah")
+      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("awesome")
 
     it 'creates tils router', ->
       tils_router_factory = { create: @spy() }

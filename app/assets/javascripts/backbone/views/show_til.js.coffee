@@ -6,5 +6,6 @@ class TilApp.Views.ShowTil extends Support.CompositeView
     @convertor = opts.converter or new Markdown.Converter()
 
   render: ->
-    @$el.html(@convertor.makeHtml(@til.get('content')))
+    if @til
+      @$el.html(@convertor.makeHtml(@til.get('content')))
     @
