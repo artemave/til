@@ -35,3 +35,13 @@ describe "Til", ->
 
       TilApp.init(tils_index_factory: tils_index_factory)
       expect($(TilApp.bodySelector)).toHaveText(/text/)
+
+    it 'creates til details container element', ->
+      setFixtures sandbox()
+      TilApp.bodySelector = '#sandbox'
+
+      new TilApp.Routers.TilsRouter
+
+      TilApp.init()
+      expect($(TilApp.bodySelector)).toContain('#note_details')
+

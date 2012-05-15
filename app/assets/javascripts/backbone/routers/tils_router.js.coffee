@@ -1,23 +1,14 @@
-class TilApp.Routers.TilsRouter extends Backbone.Router
+class TilApp.Routers.TilsRouter extends Support.SwappingRouter
   @Factory: ->
-    create: () ->
-      new TilsRouter()
+    create: ->
+      new TilsRouter
 
   initialize: (opts = {}) ->
     navigate = opts.navigate || @navigate
-
-    @createNewTilForm = ->
-      if @show_til_view
-        @show_til_view.leave()
-
-      @new_til_view = new TilApp.Views.TilForm()
-      $(TilApp.bodySelector).append(@new_til_view.render().el)
-      $(@new_til_view).trigger('load_pagedown_editor')
+    @til_form_view_factory = opts.til_form_view_factory || new TilApp.Views.TilForm.Factory
+    @el = opts.el || '#note_details'
 
     @redirectToShowLastModifiedTil = ->
-      if @new_til_view
-        @new_til_view.leave()
-
       last_modified_til = TilApp.tilsCollection.last_modified_til()
 
       if last_modified_til
@@ -32,13 +23,12 @@ class TilApp.Routers.TilsRouter extends Backbone.Router
     @redirectToShowLastModifiedTil()
 
   new: ->
-    @createNewTilForm()
+    new_til_view = @til_form_view_factory.create()
+    @swap(new_til_view)
+    $(new_til_view).trigger('load_pagedown_editor')
 
   show: (id) ->
-    if @show_til_view
-      @show_til_view.leave()
-
-    @show_til_view = new TilApp.Views.ShowTil(til: TilApp.tilsCollection.get(id))
-    $(TilApp.bodySelector).append(@show_til_view.render().el)
+    show_til_view = new TilApp.Views.ShowTil(til: TilApp.tilsCollection.get(id))
+    @swap(show_til_view)
   
 
