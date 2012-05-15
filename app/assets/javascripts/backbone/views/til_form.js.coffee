@@ -1,4 +1,8 @@
 class TilApp.Views.TilForm extends Support.CompositeView
+  @Factory: ->
+    create: ->
+      new TilForm
+
   className: 'span8'
 
   events:
