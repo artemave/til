@@ -12,6 +12,12 @@ Given /^I have learned the following things in the past:$/ do |table|
   end
 end
 
+Given /^the first one has been updated last$/ do
+  t = Til.first
+  t.content = 'it is time to sleep'
+  t.save
+end
+
 Given /^today I learned that "([^"]*)"$/ do |piece_of_knowledge|
   @piece_of_knowledge = piece_of_knowledge
 end
@@ -37,9 +43,9 @@ Then /^list of my TILs should include "([^"]*)"$/ do |content|
   end
 end
 
-Then /^I should see the content of the last one$/ do
+Then /^I should see the content of the first one$/ do
   last_modified_til = Til.asc(:updated_at).last
-  within "##{last_modified_til.id}_til_full" do
+  within "#note_details" do
     page.should have_content last_modified_til.content
   end
 end

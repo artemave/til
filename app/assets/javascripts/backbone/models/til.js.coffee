@@ -9,7 +9,7 @@ class TilApp.Collections.TilsCollection extends Backbone.Collection
   url: '/tils'
 
   comparator: (til) ->
-    til.get('updated_at')
+    Date.parse til.get('updated_at')
 
   last_modified_til: ->
     @last()

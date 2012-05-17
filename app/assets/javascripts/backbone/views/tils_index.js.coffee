@@ -20,7 +20,7 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
     @collection.each (til) =>
       row = new TilApp.Views.TilsIndexItem(model: til)
       @renderChild(row)
-      @$('tbody').append(row.el)
+      @$('tbody').prepend(row.el)
 
   @Factory: ->
     create: (opts = {}) ->
