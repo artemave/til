@@ -15,6 +15,7 @@ end
 Given /^the first one has been updated last$/ do
   t = Til.first
   t.content = 'it is time to sleep'
+  sleep 1 # so that updated time differ from others
   t.save
 end
 
