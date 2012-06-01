@@ -6,7 +6,6 @@ Feature: view note
   Background:
     Given I am signed in
 
-  @now
   Scenario: show last modified note by default
     Given I have learned the following things in the past:
       | til                                                                                |
@@ -16,4 +15,10 @@ Feature: view note
     And the first one has been updated last
     When I view my tils
     Then I should see the content of the first one
+
+  @now
+  Scenario: view particular note
+    Given I have some notes
+    When I choose to see one
+    Then I should see its content
 
