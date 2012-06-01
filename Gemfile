@@ -45,6 +45,7 @@ group :test, :development do
   gem 'capybara-firebug'
   gem 'rb-fsevent'
   gem 'growl'
+  gem 'delorean'
 end
 
 group :test do

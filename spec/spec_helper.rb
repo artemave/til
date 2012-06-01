@@ -9,6 +9,7 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'database_cleaner'
   require 'awesome_print'
+  require 'delorean'
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -35,6 +36,11 @@ Spork.prefork do
     end
 
     config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      Delorean.back_to_the_present
       DatabaseCleaner.clean
     end
   end
