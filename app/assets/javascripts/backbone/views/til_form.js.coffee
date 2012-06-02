@@ -8,11 +8,14 @@ class TilApp.Views.TilForm extends Support.CompositeView
   events:
     "load_pagedown_editor": "load_pagedown_editor"
 
+  initialize: (opts = {}) ->
+    @tils_collection = opts.tils_collection || TilApp.tilsCollection
+
   render: ->
     @$el.html(JST['tils/form']())
 
     @$('button[type="submit"]').bind 'click', =>
-      TilApp.tilsCollection.create
+      @tils_collection.create
         content: @$('textarea').val()
 
       false
