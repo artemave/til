@@ -1,10 +1,11 @@
 class TilApp.Views.TilForm extends Support.CompositeView
   @Factory: ->
-    create: ->
-      new TilForm
+    create: (opts = {}) ->
+      new TilForm(opts)
 
-    createEdit: (til) ->
-      new TilForm(til: til)
+    createEdit: (til, opts = {}) ->
+      opts.til = til
+      new TilForm(opts)
 
   className: 'span8'
 
@@ -21,8 +22,16 @@ class TilApp.Views.TilForm extends Support.CompositeView
     this
 
   save: ->
-    @tils_collection.create
-      content: @$('textarea').val()
+    new_content = @$('textarea').val()
+    existing_til = @tils_collection.get(@til.id)
+
+    if existing_til?
+      @til.set 'content', new_content
+      @til.save()
+    else
+      @tils_collection.create
+        content: new_content
+
     false
 
   load_pagedown_editor: ->
