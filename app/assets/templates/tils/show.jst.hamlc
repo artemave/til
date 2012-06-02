@@ -1,0 +1,2 @@
+%div!= @content
+%button.btn.btn-primary{type: 'submit'} Edit
