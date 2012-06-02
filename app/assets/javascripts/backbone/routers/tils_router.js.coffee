@@ -18,6 +18,7 @@ class TilApp.Routers.TilsRouter extends Support.SwappingRouter
     "": "root"
     "new": "new"
     "tils/:id": "show"
+    "tils/:id/edit": "edit"
 
   root: ->
     @redirectToShowLastModifiedTil()
@@ -31,4 +32,7 @@ class TilApp.Routers.TilsRouter extends Support.SwappingRouter
     show_til_view = new TilApp.Views.ShowTil(til: TilApp.tilsCollection.get(id))
     @swap(show_til_view)
   
-
+  edit: (id) ->
+    edit_til_view = @til_form_view_factory.createEdit(TilApp.tilsCollection.get(id))
+    @swap(edit_til_view)
+    $(edit_til_view).trigger('load_pagedown_editor')
