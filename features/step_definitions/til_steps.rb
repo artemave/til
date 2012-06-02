@@ -51,7 +51,6 @@ Then /^my list of tils should include the following:$/ do |table|
 end
 
 Then /^list of my TILs should include "([^"]*)"$/ do |content|
-  Til.exists?(conditions: { content: content }).should be(true), "Expected til with content #{content} to have been saved in db"
   within '#tils_index' do
     page.should have_content content
   end
