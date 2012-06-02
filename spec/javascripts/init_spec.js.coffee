@@ -1,12 +1,15 @@
 describe "Til", ->
   describe "init", ->
     it 'initializes TILs collection', ->
-      TilApp.init(tils: [{content: "awesome"}, {content: "blah"}])
+      TilApp.init tils: [
+          {content: "awesome", updated_at: '2012-01-01T00:00:00Z'},
+          {content: "blah", updated_at: '2012-01-01T00:00:05Z'}
+        ]
 
       expect(TilApp.tilsCollection).toBeDefined()
       expect(TilApp.tilsCollection.length).toEqual(2)
-      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("blah")
-      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("awesome")
+      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("awesome")
+      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
 
     it 'creates tils router', ->
       tils_router_factory = { create: @stub().returns(navigate: 'navigate') }
