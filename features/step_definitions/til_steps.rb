@@ -18,6 +18,10 @@ Given /^I have some notes$/ do
   end
 end
 
+Given /^I have a note with content "(.*?)"$/ do |content|
+  Til.create! content: content
+end
+
 Given /^the first one has been updated last$/ do
   t = Til.first
   t.content = 'it is time to sleep'
@@ -40,6 +44,11 @@ When /^I add new TIL$/ do
   click_link "New"
   fill_in "wmd-input", with: @piece_of_knowledge
   click_button "Save"
+end
+
+When /^I change its content to "(.*?)"$/ do |content|
+  visit root_path
+  click_button 'Edit'
 end
 
 Then /^my list of tils should include the following:$/ do |table|

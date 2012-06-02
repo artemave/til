@@ -16,7 +16,6 @@ Feature: view note
     When I view my tils
     Then I should see the content of the first one
 
-  @now
   Scenario: view particular note
     Given I have some notes
     When I choose to see one
