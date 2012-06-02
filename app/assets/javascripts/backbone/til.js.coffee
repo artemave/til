@@ -14,7 +14,8 @@ window.TilApp =
   init: (opts = {}) ->
     @tilsCollection = new TilApp.Collections.TilsCollection(opts.tils || [])
     
-    ( opts.tils_router_factory || new TilApp.Routers.TilsRouter.Factory ).create()
+    router = ( opts.tils_router_factory || new TilApp.Routers.TilsRouter.Factory ).create()
+    @navigate = router.navigate
 
     menu_factory = opts.menu_factory || new TilApp.Views.Menu.Factory
     @menu_view = menu_factory.create()

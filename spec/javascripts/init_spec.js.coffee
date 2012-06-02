@@ -9,9 +9,14 @@ describe "Til", ->
       expect(TilApp.tilsCollection.models[1].get('content')).toEqual("awesome")
 
     it 'creates tils router', ->
-      tils_router_factory = { create: @spy() }
+      tils_router_factory = { create: @stub().returns(navigate: 'navigate') }
       TilApp.init(tils_router_factory: tils_router_factory)
       expect(tils_router_factory.create).toHaveBeenCalled()
+
+    it 'sets global navigate', ->
+      tils_router_factory = { create: @stub().returns(navigate: 'navigate') }
+      TilApp.init(tils_router_factory: tils_router_factory)
+      expect(TilApp.navigate).toEqual('navigate')
 
     it 'starts backbone history', ->
       history = { start: @spy() }
