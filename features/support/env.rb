@@ -8,8 +8,9 @@ Spork.prefork do
   require 'capybara/firebug'
   require 'delorean'
   require_relative 'paths'
+  require_relative 'helpers'
 
-  World(KnowsAboutPaths)
+  World(KnowsAboutPaths, Helpers)
 
   Capybara.default_selector = :css
   Capybara.default_driver = :selenium

@@ -57,7 +57,6 @@ Then /^list of my TILs should include "([^"]*)"$/ do |content|
 end
 
 Then /^I should see the content of the first one$/ do
-  last_modified_til = Til.last_modified
   within "#note_details" do
     page.should have_content last_modified_til.content
   end

@@ -5,8 +5,4 @@ class Til
   field :content, :type => String
 
   validates_presence_of :content
-
-  def self.last_modified
-    asc(:updated_at).last
-  end
 end
