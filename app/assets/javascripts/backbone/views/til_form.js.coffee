@@ -3,6 +3,9 @@ class TilApp.Views.TilForm extends Support.CompositeView
     create: ->
       new TilForm
 
+    createEdit: (til) ->
+      new TilForm(til: til)
+
   className: 'span8'
 
   events:
@@ -11,9 +14,10 @@ class TilApp.Views.TilForm extends Support.CompositeView
 
   initialize: (opts = {}) ->
     @tils_collection = opts.tils_collection || TilApp.tilsCollection
+    @til = opts.til || new TilApp.Models.Til
 
   render: ->
-    @$el.html(JST['tils/form']())
+    @$el.html(JST['tils/form'](til: @til))
     this
 
   save: ->

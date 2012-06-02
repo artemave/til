@@ -1,6 +1,6 @@
 describe 'TilApp.Views.TilForm', ->
   describe 'New til', ->
-    it 'shows editor form', ->
+    it 'shows blank editor form', ->
       new_til = new TilApp.Views.TilForm()
       $el = $(new_til.render().el)
 
@@ -15,3 +15,10 @@ describe 'TilApp.Views.TilForm', ->
       $el.find('button:contains("Save")').click()
 
       expect(tils_collection.create).toHaveBeenCalledWith(content: 'content')
+
+  describe 'Edit til', ->
+    it 'shows editor form with contents of edited til', ->
+      form_factory = new TilApp.Views.TilForm.Factory
+      til_form = form_factory.createEdit(new TilApp.Models.Til(content: 'til content'))
+      $el = $(til_form.render().el)
+      expect($el.find('textarea')).toHaveText(/til content/)
