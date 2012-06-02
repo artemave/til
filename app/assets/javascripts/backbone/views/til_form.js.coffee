@@ -7,25 +7,23 @@ class TilApp.Views.TilForm extends Support.CompositeView
 
   events:
     "load_pagedown_editor": "load_pagedown_editor"
+    "click button": "save"
 
   initialize: (opts = {}) ->
     @tils_collection = opts.tils_collection || TilApp.tilsCollection
 
   render: ->
     @$el.html(JST['tils/form']())
-
-    @$('button[type="submit"]').bind 'click', =>
-      @tils_collection.create
-        content: @$('textarea').val()
-
-      false
-
     this
+
+  save: ->
+    @tils_collection.create
+      content: @$('textarea').val()
+    false
 
   load_pagedown_editor: ->
     if @$el.is(':visible')
       convertor = Markdown.getSanitizingConverter()
       editor = new Markdown.Editor(convertor)
       editor.run()
-
 
