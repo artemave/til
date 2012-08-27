@@ -1,21 +1,17 @@
 development:
-  host: localhost
-  database: til_development
-
+  sessions:
+    default:
+      database: til_development
+      hosts:
+        - localhost:27017
 test:
-  host: localhost
-  database: til_test
+  sessions:
+    default:
+      database: til_test
+      hosts:
+        - localhost:27017
 
-# set these environment variables on your prod server
 production:
-  uri:  <%= ENV['MONGOLAB_URI'] %>
-  #host: <%= ENV['MONGOID_HOST'] %>
-  #port: <%= ENV['MONGOID_PORT'] %>
-  #username: <%= ENV['MONGOID_USERNAME'] %>
-  #password: <%= ENV['MONGOID_PASSWORD'] %>
-  #database: <%= ENV['MONGOID_DATABASE'] %>
-  # slaves:
-  #   - host: slave1.local
-  #     port: 27018
-  #   - host: slave2.local
-  #     port: 27019
+  sessions:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>

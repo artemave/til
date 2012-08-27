@@ -41,14 +41,13 @@ group :test, :development do
   gem 'guard-bundler'
   gem 'guard-jasmine'
   gem 'jasminerice'
-  gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'capybara-firebug'
   gem 'rb-fsevent'
   gem 'growl'
   gem 'delorean'
 end
 
 group :test do
+  gem 'chromedriver-helper'
   gem 'mongoid-rspec'
   gem 'cucumber-rails', require: false
   gem 'rspec-rails'
