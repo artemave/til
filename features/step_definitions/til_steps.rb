@@ -49,6 +49,8 @@ end
 When /^I change its content to "(.*?)"$/ do |content|
   visit root_path
   click_button 'Edit'
+  fill_in 'wmd-input', with: content
+  click_button 'Save'
 end
 
 Then /^my list of tils should include the following:$/ do |table|
@@ -74,5 +76,13 @@ end
 Then /^I should see its content$/ do
   within '#note_details' do
     page.should have_content @chosen_til.content
+  end
+end
+
+Then /^its content should be "(.*?)"$/ do |text|
+  %w[#wmd-preview #tils].each do |selector|
+    within selector do
+      page.should have_content text
+    end
   end
 end

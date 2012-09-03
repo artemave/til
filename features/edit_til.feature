@@ -6,7 +6,6 @@ Feature: edit note
   Background:
     Given I am signed in
 
-  @now
   Scenario: edit note
     Given I have a note with content "bloody roots"
     When I change its content to "wat"

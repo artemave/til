@@ -24,6 +24,8 @@ Spork.prefork do
 
   Before do
     DatabaseCleaner.start
+
+    # or else twitter bootstrap navbar collapses and capybara can't press nav buttons
     Capybara.current_session.driver.browser.manage.window.resize_to 1250, 900
   end
 
