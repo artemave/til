@@ -6,12 +6,6 @@ When /^I view my notes/ do
   visit root_path
 end
 
-Given /^I have learned the following things in the past:$/ do |table|
-  table.hashes.each do |row|
-    Til.create(content: row['til'])
-  end
-end
-
 Given /^I have some notes$/ do
   5.times do |n|
     Til.create! content: n
