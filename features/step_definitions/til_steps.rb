@@ -2,7 +2,7 @@ Given /^I am signed in$/ do
   visit twitter_auth_path
 end
 
-When /^I view my tils$/ do
+When /^I view my notes/ do
   visit root_path
 end
 
@@ -22,7 +22,7 @@ Given /^I have a note with content "(.*?)"$/ do |content|
   Til.create! content: content
 end
 
-Given /^the first one has been updated last$/ do
+Given /^the oldest one has been updated most recently$/ do
   t = Til.first
   t.content = 'it is time to sleep'
   Delorean.jump 10 # so that updated time differ from others
@@ -67,7 +67,7 @@ Then /^it should appear in the list of my notes$/ do
   end
 end
 
-Then /^I should see the content of the first one$/ do
+Then /^I should see the content of the oldest note$/ do
   within "#note_details" do
     page.should have_content last_modified_til.content
   end
