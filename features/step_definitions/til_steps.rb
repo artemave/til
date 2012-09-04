@@ -29,8 +29,8 @@ Given /^the first one has been updated last$/ do
   t.save
 end
 
-Given /^today I learned that "([^"]*)"$/ do |piece_of_knowledge|
-  @piece_of_knowledge = piece_of_knowledge
+Given /^I've just googled something useful$/ do
+  @something_useful = 'WAT'
 end
 
 When /^I choose to see one$/ do
@@ -40,9 +40,9 @@ When /^I choose to see one$/ do
   find("##{@chosen_til.id}_index_item").click
 end
 
-When /^I add new TIL$/ do
+When /^I save it in new note$/ do
   click_link "New"
-  fill_in "wmd-input", with: @piece_of_knowledge
+  fill_in "wmd-input", with: @something_useful
   click_button "Save"
 end
 
@@ -61,9 +61,9 @@ Then /^my list of tils should include the following:$/ do |table|
   end
 end
 
-Then /^list of my TILs should include "([^"]*)"$/ do |content|
+Then /^it should appear in the list of my notes$/ do
   within '#tils_index' do
-    page.should have_content content
+    page.should have_content @something_useful
   end
 end
 
