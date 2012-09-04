@@ -1,4 +1,4 @@
-%table#tils_index.table
+%table#notes_index.table
   %thead
     %tr
       %th Notes

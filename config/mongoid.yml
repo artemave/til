@@ -1,13 +1,13 @@
 development:
   sessions:
     default:
-      database: til_development
+      database: note_development
       hosts:
         - localhost:27017
 test:
   sessions:
     default:
-      database: til_test
+      database: note_test
       hosts:
         - localhost:27017
 

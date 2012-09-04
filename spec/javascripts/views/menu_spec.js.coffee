@@ -1,10 +1,10 @@
-describe 'TilApp.MenuView', ->
+describe 'DevNotesApp.MenuView', ->
   beforeEach ->
     setFixtures sandbox
-      id: 'til_button_bar'
+      id: 'note_button_bar'
 
   it "renders new button", ->
-    view = new TilApp.Views.Menu()
+    view = new DevNotesApp.Views.Menu()
     $el = $(view.render().el)
 
     expect($el).toContain('a')
