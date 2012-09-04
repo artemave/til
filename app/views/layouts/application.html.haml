@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Til
+    %title devNotes
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -13,7 +13,7 @@
             %span.icon-bar
           %a.brand{href: '#'} devNotes
           .nav-collapse
-            %ul.nav#til_button_bar
+            %ul.nav#note_button_bar
             %ul.nav.pull-right
               - if current_user
                 %li

@@ -1,38 +1,38 @@
-class TilApp.Routers.TilsRouter extends Support.SwappingRouter
+class DevNotesApp.Routers.NotesRouter extends Support.SwappingRouter
   @Factory: ->
     create: ->
-      new TilsRouter
+      new NotesRouter
 
   initialize: (opts = {}) ->
     navigate = opts.navigate || @navigate
-    @til_form_view_factory = opts.til_form_view_factory || new TilApp.Views.TilForm.Factory
+    @note_form_view_factory = opts.note_form_view_factory || new DevNotesApp.Views.NoteForm.Factory
     @el = opts.el || '#note_details'
 
-    @redirectToShowLastModifiedTil = ->
-      last_modified_til = TilApp.tilsCollection.last_modified_til()
+    @redirectToShowLastModifiedNote = ->
+      last_modified_note = DevNotesApp.notesCollection.last_modified_note()
 
-      if last_modified_til
-        navigate("tils/#{last_modified_til.id}", trigger: true)
+      if last_modified_note
+        navigate("notes/#{last_modified_note.id}", trigger: true)
 
   routes:
     "": "root"
     "new": "new"
-    "tils/:id": "show"
-    "tils/:id/edit": "edit"
+    "notes/:id": "show"
+    "notes/:id/edit": "edit"
 
   root: ->
-    @redirectToShowLastModifiedTil()
+    @redirectToShowLastModifiedNote()
 
   new: ->
-    new_til_view = @til_form_view_factory.create()
-    @swap(new_til_view)
-    $(new_til_view).trigger('load_pagedown_editor')
+    new_note_view = @note_form_view_factory.create()
+    @swap(new_note_view)
+    $(new_note_view).trigger('load_pagedown_editor')
 
   show: (id) ->
-    show_til_view = new TilApp.Views.ShowTil(til: TilApp.tilsCollection.get(id))
-    @swap(show_til_view)
+    show_note_view = new DevNotesApp.Views.ShowNote(note: DevNotesApp.notesCollection.get(id))
+    @swap(show_note_view)
   
   edit: (id) ->
-    edit_til_view = @til_form_view_factory.createEdit(TilApp.tilsCollection.get(id))
-    @swap(edit_til_view)
-    $(edit_til_view).trigger('load_pagedown_editor')
+    edit_note_view = @note_form_view_factory.createEdit(DevNotesApp.notesCollection.get(id))
+    @swap(edit_note_view)
+    $(edit_note_view).trigger('load_pagedown_editor')

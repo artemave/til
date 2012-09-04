@@ -1,5 +1,5 @@
 module Helpers
-  def last_modified_til
-    Til.asc(:updated_at).last
+  def last_modified_note
+    Note.asc(:updated_at).last
   end
 end

@@ -1,15 +1,15 @@
-class TilApp.Models.Til extends Backbone.Model
-  paramRoot: 'til'
+class DevNotesApp.Models.Note extends Backbone.Model
+  paramRoot: 'note'
   idAttribute: "_id"
 
 
-class TilApp.Collections.TilsCollection extends Backbone.Collection
-  model: TilApp.Models.Til
+class DevNotesApp.Collections.NotesCollection extends Backbone.Collection
+  model: DevNotesApp.Models.Note
 
-  url: '/tils'
+  url: '/notes'
 
-  comparator: (til) ->
-    Date.parse til.get('updated_at')
+  comparator: (note) ->
+    Date.parse note.get('updated_at')
 
-  last_modified_til: ->
+  last_modified_note: ->
     @last()

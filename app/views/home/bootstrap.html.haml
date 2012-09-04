@@ -1,7 +1,7 @@
 - if current_user
   :javascript
     $(function() {
-      window.TilApp.init({tils: #{Til.all.to_json}});
+      window.DevNotesApp.init({notes: #{Note.all.to_json}});
     });
 - else
   Howdy, Stranger!

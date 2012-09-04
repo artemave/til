@@ -18,6 +18,6 @@
 //= require Markdown.Converter
 //= require Markdown.Sanitizer
 //= require Markdown.Editor
-//= require backbone/til
+//= require backbone/note
 //= require_tree ../templates
 //= require_tree .

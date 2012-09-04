@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Tillit::Application.load_tasks
+DevNotes::Application.load_tasks

@@ -1,55 +1,55 @@
-describe "Til", ->
+describe "Note", ->
   describe "init", ->
-    it 'initializes TILs collection', ->
-      TilApp.init tils: [
+    it 'initializes NOTEs collection', ->
+      DevNotesApp.init notes: [
           {content: "awesome", updated_at: '2012-01-01T00:00:00Z'},
           {content: "blah", updated_at: '2012-01-01T00:00:05Z'}
         ]
 
-      expect(TilApp.tilsCollection).toBeDefined()
-      expect(TilApp.tilsCollection.length).toEqual(2)
-      expect(TilApp.tilsCollection.models[0].get('content')).toEqual("awesome")
-      expect(TilApp.tilsCollection.models[1].get('content')).toEqual("blah")
+      expect(DevNotesApp.notesCollection).toBeDefined()
+      expect(DevNotesApp.notesCollection.length).toEqual(2)
+      expect(DevNotesApp.notesCollection.models[0].get('content')).toEqual("awesome")
+      expect(DevNotesApp.notesCollection.models[1].get('content')).toEqual("blah")
 
-    it 'creates tils router', ->
-      tils_router_factory = { create: @stub().returns(navigate: 'navigate') }
-      TilApp.init(tils_router_factory: tils_router_factory)
-      expect(tils_router_factory.create).toHaveBeenCalled()
+    it 'creates notes router', ->
+      notes_router_factory = { create: @stub().returns(navigate: 'navigate') }
+      DevNotesApp.init(notes_router_factory: notes_router_factory)
+      expect(notes_router_factory.create).toHaveBeenCalled()
 
     it 'sets global navigate', ->
-      tils_router_factory = { create: @stub().returns(navigate: 'navigate') }
-      TilApp.init(tils_router_factory: tils_router_factory)
-      expect(TilApp.navigate).toEqual('navigate')
+      notes_router_factory = { create: @stub().returns(navigate: 'navigate') }
+      DevNotesApp.init(notes_router_factory: notes_router_factory)
+      expect(DevNotesApp.navigate).toEqual('navigate')
 
     it 'starts backbone history', ->
       history = { start: @spy() }
 
-      TilApp.init(history: history)
+      DevNotesApp.init(history: history)
       expect(history.start).toHaveBeenCalled()
 
     it 'creates menu', ->
       menu = { render: @spy() }
       menu_factory = { create: @stub().returns(menu) }
 
-      TilApp.init(menu_factory: menu_factory)
+      DevNotesApp.init(menu_factory: menu_factory)
       expect(menu.render).toHaveBeenCalled()
 
-    it 'creates tils index', ->
+    it 'creates notes index', ->
       setFixtures sandbox()
-      TilApp.bodySelector = '#sandbox'
+      DevNotesApp.bodySelector = '#sandbox'
 
-      tils_index = { render: @stub().returns({el: '<div>text</div>'}) }
-      tils_index_factory = { create: @stub().withArgs(collection: TilApp.tilsCollection).returns(tils_index) }
+      notes_index = { render: @stub().returns({el: '<div>text</div>'}) }
+      notes_index_factory = { create: @stub().withArgs(collection: DevNotesApp.notesCollection).returns(notes_index) }
 
-      TilApp.init(tils_index_factory: tils_index_factory)
-      expect($(TilApp.bodySelector)).toHaveText(/text/)
+      DevNotesApp.init(notes_index_factory: notes_index_factory)
+      expect($(DevNotesApp.bodySelector)).toHaveText(/text/)
 
-    it 'creates til details container element', ->
+    it 'creates note details container element', ->
       setFixtures sandbox()
-      TilApp.bodySelector = '#sandbox'
+      DevNotesApp.bodySelector = '#sandbox'
 
-      new TilApp.Routers.TilsRouter
+      new DevNotesApp.Routers.NotesRouter
 
-      TilApp.init()
-      expect($(TilApp.bodySelector)).toContain('#note_details')
+      DevNotesApp.init()
+      expect($(DevNotesApp.bodySelector)).toContain('#note_details')
 

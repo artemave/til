@@ -1,11 +1,11 @@
-class TilApp.Views.TilForm extends Support.CompositeView
+class DevNotesApp.Views.NoteForm extends Support.CompositeView
   @Factory: ->
     create: (opts = {}) ->
-      new TilForm(opts)
+      new NoteForm(opts)
 
-    createEdit: (til, opts = {}) ->
-      opts.til = til
-      new TilForm(opts)
+    createEdit: (note, opts = {}) ->
+      opts.note = note
+      new NoteForm(opts)
 
   className: 'span8'
 
@@ -14,22 +14,22 @@ class TilApp.Views.TilForm extends Support.CompositeView
     "click button": "save"
 
   initialize: (opts = {}) ->
-    @tils_collection = opts.tils_collection || TilApp.tilsCollection
-    @til = opts.til || new TilApp.Models.Til
+    @notes_collection = opts.notes_collection || DevNotesApp.notesCollection
+    @note = opts.note || new DevNotesApp.Models.Note
 
   render: ->
-    @$el.html(JST['tils/form'](til: @til))
+    @$el.html(JST['notes/form'](note: @note))
     this
 
   save: ->
     new_content = @$('textarea').val()
-    existing_til = @tils_collection.get(@til.id)
+    existing_note = @notes_collection.get(@note.id)
 
-    if existing_til?
-      @til.set 'content', new_content
-      @til.save()
+    if existing_note?
+      @note.set 'content', new_content
+      @note.save()
     else
-      @tils_collection.create
+      @notes_collection.create
         content: new_content
 
     false

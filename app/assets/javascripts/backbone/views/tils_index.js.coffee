@@ -1,9 +1,9 @@
-class TilApp.Views.TilsIndex extends Support.CompositeView
-  id: 'tils'
+class DevNotesApp.Views.NotesIndex extends Support.CompositeView
+  id: 'notes'
   className: 'span4'
 
   initialize: (opts = {})->
-    @collection = opts.collection || new TilApp.Collections.TilsCollection()
+    @collection = opts.collection || new DevNotesApp.Collections.NotesCollection()
     _.bindAll(this, 'render')
     @collection.bind('add', @render)
     @collection.bind('change', @render)
@@ -11,18 +11,18 @@ class TilApp.Views.TilsIndex extends Support.CompositeView
   render: ->
     @renderTemplate()
     if @collection.length > 0
-      @renderTils()
+      @renderNotes()
     this
 
   renderTemplate: ->
-    $(@el).html(JST['tils/index']())
+    $(@el).html(JST['notes/index']())
 
-  renderTils: ->
-    @collection.each (til) =>
-      row = new TilApp.Views.TilsIndexItem(model: til)
+  renderNotes: ->
+    @collection.each (note) =>
+      row = new DevNotesApp.Views.NotesIndexItem(model: note)
       @renderChild(row)
       @$('tbody').prepend(row.el)
 
   @Factory: ->
     create: (opts = {}) ->
-      new TilsIndex(opts)
+      new NotesIndex(opts)

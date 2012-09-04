@@ -1,15 +1,15 @@
-class TilsController < ApplicationController
+class NotesController < ApplicationController
   respond_to :json
 
   def create
-    til = Til.new(params[:til])
-    til.save
-    respond_with til
+    note = Note.new(params[:note])
+    note.save
+    respond_with note
   end
 
   def update
-    til = Til.find(params[:id])
-    til.update_attributes(params[:til])
-    respond_with til
+    note = Note.find(params[:id])
+    note.update_attributes(params[:note])
+    respond_with note
   end
 end

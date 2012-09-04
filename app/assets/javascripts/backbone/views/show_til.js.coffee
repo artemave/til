@@ -1,19 +1,19 @@
-class TilApp.Views.ShowTil extends Support.CompositeView
+class DevNotesApp.Views.ShowNote extends Support.CompositeView
   className: 'span8'
 
   events:
-    "click button": 'redirect_to_edit_til'
+    "click button": 'redirect_to_edit_note'
 
   initialize: (opts) ->
-    @til       = opts.til
-    @navigate  = opts.navigate || TilApp.navigate
+    @note      = opts.note
+    @navigate  = opts.navigate || DevNotesApp.navigate
     @convertor = opts.converter || new Markdown.Converter()
 
   render: ->
-    if @til
-      content = @convertor.makeHtml(@til.get('content'))
-      @$el.html(JST['tils/show'](content: content))
+    if @note
+      content = @convertor.makeHtml(@note.get('content'))
+      @$el.html(JST['notes/show'](content: content))
     this
 
-  redirect_to_edit_til: ->
-    @navigate("tils/#{@til.id}/edit", trigger: true)
+  redirect_to_edit_note: ->
+    @navigate("notes/#{@note.id}/edit", trigger: true)

@@ -1,4 +1,4 @@
-class Til
+class Note
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
 

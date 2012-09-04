@@ -1,25 +1,25 @@
-describe "TilApp.Views.ShowTil", ->
+describe "DevNotesApp.Views.ShowNote", ->
 
-  it "show markdown content of a til", ->
+  it "show markdown content of a note", ->
     content = 'This is content'
     markdown = 'This is makrdown'
-    til = new TilApp.Models.Til(content: content)
+    note = new DevNotesApp.Models.Note(content: content)
 
     converter = makeHtml: @stub()
     converter.makeHtml.withArgs(content).returns(markdown)
 
-    view = new TilApp.Views.ShowTil(til: til, converter: converter)
+    view = new DevNotesApp.Views.ShowNote(note: note, converter: converter)
     $el = view.render().$el
 
     expect($el).toHaveText(new RegExp(markdown))
 
   it 'can be switched to edit mode', ->
     navigate = @spy()
-    til = new TilApp.Models.Til(content: 'content', _id: 1)
-    view = new TilApp.Views.ShowTil(til: til, navigate: navigate)
+    note = new DevNotesApp.Models.Note(content: 'content', _id: 1)
+    view = new DevNotesApp.Views.ShowNote(note: note, navigate: navigate)
 
     $el = $(view.render().el)
     button = $el.find("button:contains('Edit')")
     button.click()
 
-    expect(navigate).toHaveBeenCalledWith("tils/1/edit", trigger: true)
+    expect(navigate).toHaveBeenCalledWith("notes/1/edit", trigger: true)

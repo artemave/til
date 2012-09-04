@@ -1,19 +1,19 @@
-describe 'TilApp.Views.TilsIndexItem', ->
-  it 'renders Til model in table row', ->
+describe 'DevNotesApp.Views.NotesIndexItem', ->
+  it 'renders Note model in table row', ->
     content = "it is snowing #{Math.random()}"
-    til = new TilApp.Models.Til(content: content, _id: 5)
-    view = new TilApp.Views.TilsIndexItem(model: til)
+    note = new DevNotesApp.Models.Note(content: content, _id: 5)
+    view = new DevNotesApp.Views.NotesIndexItem(model: note)
     $el = $(view.render().el)
 
     expect($el).toBe('tr')
     expect($el).toContain('td')
     expect($el).toHaveText(new RegExp(content))
 
-  it 'shows til when clicked', ->
+  it 'shows note when clicked', ->
     navigate = @spy()
-    til = new TilApp.Models.Til(content: 'content', _id: 5)
-    view = new TilApp.Views.TilsIndexItem(model: til, navigate: navigate)
+    note = new DevNotesApp.Models.Note(content: 'content', _id: 5)
+    view = new DevNotesApp.Views.NotesIndexItem(model: note, navigate: navigate)
     $el = $(view.render().el)
     $el.click()
 
-    expect(navigate).toHaveBeenCalledWith("tils/5", trigger: true)
+    expect(navigate).toHaveBeenCalledWith("notes/5", trigger: true)

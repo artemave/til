@@ -1,25 +1,25 @@
-describe 'TilApp.Routers.TilsRouter', ->
-  it 'roots to redirecting to show last modified til', ->
+describe 'DevNotesApp.Routers.NotesRouter', ->
+  it 'roots to redirecting to show last modified note', ->
     navigate = @spy()
-    @stub(TilApp.tilsCollection, 'last_modified_til').returns(new TilApp.Models.Til(_id: 1, content: 'sweet'))
+    @stub(DevNotesApp.notesCollection, 'last_modified_note').returns(new DevNotesApp.Models.Note(_id: 1, content: 'sweet'))
 
-    router = new TilApp.Routers.TilsRouter(navigate: navigate)
+    router = new DevNotesApp.Routers.NotesRouter(navigate: navigate)
     router.root()
 
-    expect(navigate).toHaveBeenCalledWith("tils/1", trigger: true)
+    expect(navigate).toHaveBeenCalledWith("notes/1", trigger: true)
 
   describe '#new', ->
-    it 'displays new til form', ->
+    it 'displays new note form', ->
       setFixtures sandbox()
-      TilApp.bodySelector = '#sandbox'
+      DevNotesApp.bodySelector = '#sandbox'
 
-      til_form_view = { render: @stub().returns(el: 'form') }
-      til_form_view_factory = { create: @stub().returns(til_form_view) }
+      note_form_view = { render: @stub().returns(el: 'form') }
+      note_form_view_factory = { create: @stub().returns(note_form_view) }
 
-      spyOnEvent($(til_form_view), 'load_pagedown_editor')
+      spyOnEvent($(note_form_view), 'load_pagedown_editor')
 
-      router = new TilApp.Routers.TilsRouter(til_form_view_factory: til_form_view_factory, el: '#sandbox')
+      router = new DevNotesApp.Routers.NotesRouter(note_form_view_factory: note_form_view_factory, el: '#sandbox')
       router.new()
 
       expect($('#sandbox')).toHaveText(/form/)
-      expect('load_pagedown_editor').toHaveBeenTriggeredOn($(til_form_view))
+      expect('load_pagedown_editor').toHaveBeenTriggeredOn($(note_form_view))

@@ -1,37 +1,37 @@
-describe 'TilApp.Views.TilForm', ->
-  describe 'New til', ->
+describe 'DevNotesApp.Views.NoteForm', ->
+  describe 'New note', ->
     it 'shows blank editor form', ->
-      new_til = new TilApp.Views.TilForm()
-      $el = $(new_til.render().el)
+      new_note = new DevNotesApp.Views.NoteForm()
+      $el = $(new_note.render().el)
 
       expect($el).toContain('textarea')
       expect($el.find('button[type="submit"]')).toHaveText(/Save/)
 
-    it 'creates new til', ->
-      tils_collection = create: @spy(), get: ->
-      til_form = new TilApp.Views.TilForm(tils_collection: tils_collection)
-      $el = $(til_form.render().el)
+    it 'creates new note', ->
+      notes_collection = create: @spy(), get: ->
+      note_form = new DevNotesApp.Views.NoteForm(notes_collection: notes_collection)
+      $el = $(note_form.render().el)
       $el.find('textarea').val('content')
       $el.find('button:contains("Save")').click()
 
-      expect(tils_collection.create).toHaveBeenCalledWith(content: 'content')
+      expect(notes_collection.create).toHaveBeenCalledWith(content: 'content')
 
-  describe 'Edit til', ->
-    it 'shows editor form with contents of edited til', ->
-      form_factory = new TilApp.Views.TilForm.Factory
-      til_form = form_factory.createEdit(new TilApp.Models.Til(content: 'til content'))
-      $el = $(til_form.render().el)
-      expect($el.find('textarea')).toHaveText(/til content/)
+  describe 'Edit note', ->
+    it 'shows editor form with contents of edited note', ->
+      form_factory = new DevNotesApp.Views.NoteForm.Factory
+      note_form = form_factory.createEdit(new DevNotesApp.Models.Note(content: 'note content'))
+      $el = $(note_form.render().el)
+      expect($el.find('textarea')).toHaveText(/note content/)
 
-    it 'saves changes to existing til', ->
-      til = new TilApp.Models.Til(content: 'til content')
-      tils_collection = get: @stub().withArgs(til.id).returns(til)
+    it 'saves changes to existing note', ->
+      note = new DevNotesApp.Models.Note(content: 'note content')
+      notes_collection = get: @stub().withArgs(note.id).returns(note)
 
-      form_factory = new TilApp.Views.TilForm.Factory()
-      til_form = form_factory.createEdit(til, tils_collection: tils_collection)
+      form_factory = new DevNotesApp.Views.NoteForm.Factory()
+      note_form = form_factory.createEdit(note, notes_collection: notes_collection)
 
-      $el = $(til_form.render().el)
+      $el = $(note_form.render().el)
       $el.find('textarea').val('new content')
       $el.find('button:contains("Save")').click()
 
-      expect(til.get('content')).toEqual('new content')
+      expect(note.get('content')).toEqual('new content')
