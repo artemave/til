@@ -53,10 +53,10 @@ When /^I change its content to "(.*?)"$/ do |content|
   click_button 'Save'
 end
 
-Then /^my list of tils should include the following:$/ do |table|
-  table.hashes.each do |row|
+Then /^I should see a list of notes with their content$/ do
+  Til.all do |note|
     within '#tils' do
-      page.should have_content(row['content'])
+      page.should have_content note.content
     end
   end
 end
