@@ -1,4 +1,8 @@
 class DevNotesApp.Views.ShowNote extends Support.CompositeView
+  @Factory: ->
+    create: (note) ->
+      new ShowNote(note: note)
+
   className: 'span8'
 
   events:
