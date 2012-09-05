@@ -23,15 +23,19 @@ describe 'DevNotesApp.Views.NoteForm', ->
       $el = $(note_form.render().el)
       expect($el.find('textarea')).toHaveText(/note content/)
 
-    it 'saves changes to existing note', ->
-      note = new DevNotesApp.Models.Note(content: 'note content')
+    it 'updates existing note', ->
+      note = new DevNotesApp.Models.Note(content: 'old text')
+      @stub note, 'set', ->
+      @stub note, 'save', ->
       notes_collection = get: @stub().withArgs(note.id).returns(note)
 
       form_factory = new DevNotesApp.Views.NoteForm.Factory()
-      note_form = form_factory.createEdit(note, notes_collection: notes_collection)
+      note_form    = form_factory.createEdit(note, notes_collection: notes_collection)
 
       $el = $(note_form.render().el)
-      $el.find('textarea').val('new content')
+      $el.find('textarea').val('new text')
       $el.find('button:contains("Save")').click()
 
-      expect(note.get('content')).toEqual('new content')
+      expect(note.set).toHaveBeenCalledWith('content', 'new text')
+      expect(note.save).toHaveBeenCalled()
+      expect(note.set).toHaveBeenCalledBefore(note.save)
