@@ -12,6 +12,10 @@ Given /^I have some notes$/ do
   end
 end
 
+Given /^I have a note$/ do
+  Note.create! content: 'NaN'
+end
+
 Given /^I have a note with content "(.*?)"$/ do |content|
   Note.create! content: content
 end
@@ -45,6 +49,12 @@ When /^I change its content to "(.*?)"$/ do |content|
   click_button 'Edit'
   fill_in 'wmd-input', with: content
   click_button 'Save'
+end
+
+When /^I delete it/ do
+  visit root_path
+  click_button 'Delete'
+  click_button 'Yes'
 end
 
 Then /^I should see a list of notes with their content$/ do
