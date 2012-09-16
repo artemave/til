@@ -54,7 +54,7 @@ end
 When /^I delete it/ do
   visit root_path
   click_button 'Delete'
-  click_button 'Yes'
+  page.driver.wait_until(page.driver.browser.switch_to.alert.accept)
 end
 
 Then /^I should see a list of notes with their content$/ do
@@ -89,4 +89,12 @@ Then /^its content should be "(.*?)"$/ do |text|
       page.should have_content text
     end
   end
+end
+
+Then /^it should no longer exist$/ do
+  Note.count.should == 0
+end
+
+Then /^it should not be displayed$/ do
+  find('#wmd-input').text.should == ''
 end

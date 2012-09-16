@@ -4,13 +4,20 @@ describe NotesController do
   render_views
 
   it "creates note" do
-    assert_difference('Note.count') do
+    assert_difference('Note.count', 1) do
       post :create, note: { content: 'awesome note' }, format: :json
     end
     assert_response :success
   end
 
-  it "reports error" do
+  it 'destroys note' do
+    note = create :note
+    assert_difference('Note.count', -1) do
+      delete :destroy, id: note.id
+    end
+  end
+
+  it "reports validation errors" do
     assert_no_difference('Note.count') do
       post :create, note: {}, format: :json
     end

@@ -7,12 +7,13 @@ class DevNotesApp.Views.NotesIndex extends Support.CompositeView
     _.bindAll(this, 'render')
     @collection.bind('add', @render)
     @collection.bind('change', @render)
+    @collection.bind('remove', @render)
 
   render: ->
     @renderTemplate()
     if @collection.length > 0
       @renderNotes()
-    this
+    @
 
   renderTemplate: ->
     $(@el).html(JST['notes/index']())

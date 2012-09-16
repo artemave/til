@@ -6,7 +6,8 @@ class DevNotesApp.Views.ShowNote extends Support.CompositeView
   className: 'span8'
 
   events:
-    "click button": 'redirect_to_edit_note'
+    "click button.edit": 'redirect_to_edit_note'
+    "click button.delete": 'redirect_to_delete_note'
 
   initialize: (opts) ->
     @note      = opts.note
@@ -21,3 +22,7 @@ class DevNotesApp.Views.ShowNote extends Support.CompositeView
 
   redirect_to_edit_note: ->
     @navigate("notes/#{@note.id}/edit", trigger: true)
+
+  redirect_to_delete_note: ->
+    if window.confirm "Really?"
+      @navigate("notes/#{@note.id}/delete", trigger: true)

@@ -14,7 +14,9 @@ window.DevNotesApp =
   init: (opts = {}) ->
     @notesCollection = new DevNotesApp.Collections.NotesCollection(opts.notes || [])
     
-    router = ( opts.notes_router_factory || new DevNotesApp.Routers.NotesRouter.Factory ).create()
+    router = ( opts.notes_router_factory || new DevNotesApp.Routers.NotesRouter.Factory ).create
+      notes_collection: @notesCollection
+
     @navigate = router.navigate
 
     menu_factory = opts.menu_factory || new DevNotesApp.Views.Menu.Factory

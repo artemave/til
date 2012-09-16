@@ -1,2 +1,3 @@
 %div!= @content
-%button.btn.btn-primary{type: 'submit'} Edit
+%button.edit.btn.btn-primary{type: 'submit'} Edit
+%button.delete.btn.btn-primary{type: 'submit'} Delete

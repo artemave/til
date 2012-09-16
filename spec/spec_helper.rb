@@ -10,6 +10,7 @@ Spork.prefork do
   require 'database_cleaner'
   require 'awesome_print'
   require 'delorean'
+  require 'factory_girl'
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -24,6 +25,7 @@ Spork.prefork do
     config.mock_with :rspec
 
     config.include ActiveSupport::Testing::Assertions
+    config.include FactoryGirl::Syntax::Methods
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of

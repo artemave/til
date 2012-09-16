@@ -1,4 +1,4 @@
 #=require ../../app/assets/javascripts/application
-#=require sinon-1.2.0
+#=require sinon
 #=require jasmine-sinon
 #=require_tree ./

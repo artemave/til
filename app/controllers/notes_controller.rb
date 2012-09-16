@@ -12,4 +12,10 @@ class NotesController < ApplicationController
     note.update_attributes(params[:note])
     respond_with note
   end
+
+  def destroy
+    note = Note.find(params[:id])
+    note.destroy
+    render text: '{}'
+  end
 end

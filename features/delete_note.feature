@@ -5,7 +5,6 @@ Feature: delete note
   Background:
     Given I am signed in
 
-  @now
   Scenario: delete note
     Given I have a note
     When I delete it
