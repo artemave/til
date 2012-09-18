@@ -65,6 +65,12 @@ describe 'DevNotesApp.Routers.NotesRouter', ->
       expect($('#sandbox')).toHaveText(/form/)
 
   describe '#delete', ->
+    beforeEach ->
+      @server = sinon.fakeServer.create()
+
+    afterEach ->
+      @server.restore()
+
     it 'deletes note', ->
       @spy(@note, 'destroy')
       router = new DevNotesApp.Routers.NotesRouter(notes_collection: @notes)
@@ -73,11 +79,13 @@ describe 'DevNotesApp.Routers.NotesRouter', ->
 
     it 'redirects to notes index', ->
       navigate = @stub()
+      @server.respondWith('DELETE', /.*/, [200, { "Content-Type": "application/json" }, '{}'])
 
       router = new DevNotesApp.Routers.NotesRouter(notes_collection: @notes, navigate: navigate)
       router.delete(1)
 
-      waits 1000
+      @server.respond()
+
       expect(navigate).toHaveBeenCalledWith("", trigger: true)
 
 
