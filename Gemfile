@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.3'
 
-gem 'mongoid'
-gem 'bson_ext'
-
 gem 'rails-backbone'
 gem 'backbone-support'
 gem 'ejs'
@@ -13,6 +10,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'thin'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -34,21 +32,12 @@ group :test, :development do
   gem 'pry'
   gem 'pry-doc'
   gem 'turn', '~> 0.8.3', :require => false
-  gem 'spork', '~> 0.9.0.rc'
-  gem 'guard-spork'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
-  gem 'guard-bundler'
-  gem 'guard-jasmine'
   gem 'jasminerice'
-  gem 'rb-fsevent'
-  gem 'growl'
   gem 'delorean'
 end
 
 group :test do
   gem 'chromedriver-helper'
-  gem 'mongoid-rspec'
   gem 'cucumber-rails', require: false
   gem 'rspec-rails'
   gem 'database_cleaner'

@@ -1,8 +1,3 @@
-class Note
-  include Mongoid::Document
-  include Mongoid::Timestamps::Updated
-
-  field :content, :type => String
-
+class Note < ActiveRecord::Base
   validates_presence_of :content
 end
