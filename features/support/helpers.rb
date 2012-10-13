@@ -1,5 +1,5 @@
 module Helpers
   def last_modified_note
-    Note.asc(:updated_at).last
+    Note.order('updated_at ASC').last
   end
 end

@@ -1,8 +1,8 @@
 describe "DevNotesApp.Views.NotesIndex", ->
   beforeEach ->
     @notes = new DevNotesApp.Collections.NotesCollection [
-      { _id: 1, content: 'sparrow is an excellent email client with seamless gmail support' },
-      { _id: 2, content: 'alfred is a nice spotlite alternative' }
+      { id: 1, content: 'sparrow is an excellent email client with seamless gmail support' },
+      { id: 2, content: 'alfred is a nice spotlite alternative' }
     ]
     @view = new DevNotesApp.Views.NotesIndex(collection: @notes)
     @$el = $(@view.render().el)

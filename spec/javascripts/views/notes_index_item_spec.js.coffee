@@ -1,7 +1,7 @@
 describe 'DevNotesApp.Views.NotesIndexItem', ->
   it 'renders Note model in table row', ->
     content = "it is snowing #{Math.random()}"
-    note = new DevNotesApp.Models.Note(content: content, _id: 5)
+    note = new DevNotesApp.Models.Note(content: content, id: 5)
     view = new DevNotesApp.Views.NotesIndexItem(model: note)
     $el = $(view.render().el)
 
@@ -11,7 +11,7 @@ describe 'DevNotesApp.Views.NotesIndexItem', ->
 
   it 'shows note when clicked', ->
     navigate = @spy()
-    note = new DevNotesApp.Models.Note(content: 'content', _id: 5)
+    note = new DevNotesApp.Models.Note(content: 'content', id: 5)
     view = new DevNotesApp.Views.NotesIndexItem(model: note, navigate: navigate)
     $el = $(view.render().el)
     $el.click()

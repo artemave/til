@@ -2,10 +2,10 @@ describe 'DevNotesApp.Routers.NotesRouter', ->
   beforeEach ->
     setFixtures sandbox()
     DevNotesApp.bodySelector = '#sandbox'
-    @note = new DevNotesApp.Models.Note(_id: 1, content: 'first note')
+    @note = new DevNotesApp.Models.Note(id: 1, content: 'first note')
     @notes = new DevNotesApp.Collections.NotesCollection [
-      { _id: 2, content: 'sparrow is an excellent email client with seamless gmail support' },
-      { _id: 3, content: 'alfred is a nice spotlite alternative' }
+      { id: 2, content: 'sparrow is an excellent email client with seamless gmail support' },
+      { id: 3, content: 'alfred is a nice spotlite alternative' }
     ]
     @notes.add(@note)
 

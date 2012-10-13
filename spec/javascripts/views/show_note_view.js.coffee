@@ -14,7 +14,7 @@ describe "DevNotesApp.Views.ShowNote", ->
 
   it 'can be switched to edit mode', ->
     navigate = @spy()
-    note = new DevNotesApp.Models.Note(content: 'content', _id: 1)
+    note = new DevNotesApp.Models.Note(content: 'content', id: 1)
     view = new DevNotesApp.Views.ShowNote(note: note, navigate: navigate)
 
     $el = $(view.render().el)
@@ -27,7 +27,7 @@ describe "DevNotesApp.Views.ShowNote", ->
     navigate = @spy()
     @stub(window, 'confirm').returns(true)
 
-    note = new DevNotesApp.Models.Note(content: 'content', _id: 1)
+    note = new DevNotesApp.Models.Note(content: 'content', id: 1)
     view = new DevNotesApp.Views.ShowNote(note: note, navigate: navigate)
 
     $el = $(view.render().el)

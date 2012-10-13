@@ -9,6 +9,7 @@ class DevNotesApp.Views.NotesIndexItem extends Support.CompositeView
     @navigate = opts.navigate || DevNotesApp.navigate
 
   render: ->
+    console.log @model
     $(@el).html(JST['notes/item'](model: @model))
     this
 
