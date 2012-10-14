@@ -41,7 +41,7 @@ end
 When /^I save it in new note$/ do
   click_link "New"
   fill_in "wmd-input", with: @something_useful
-  click_button "Save"
+  click_button "Create"
 end
 
 When /^I change its content to "(.*?)"$/ do |content|

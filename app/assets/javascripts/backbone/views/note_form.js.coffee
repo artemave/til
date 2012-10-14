@@ -16,21 +16,23 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
   initialize: (opts = {}) ->
     @notes_collection = opts.notes_collection || DevNotesApp.notesCollection
     @note = opts.note || new DevNotesApp.Models.Note
+    @navigate = opts.navigate || DevNotesApp.navigate
+    @
 
   render: ->
     @$el.html(JST['notes/form'](note: @note))
-    this
+    @
 
   save: ->
     new_content = @$('textarea').val()
-    existing_note = @notes_collection.get(@note.id)
 
-    if existing_note?
+    if @note.isNew()
+      @notes_collection.create { content: new_content }, wait: true, success: (new_model) =>
+        console.log new_model
+        @navigate "notes/#{new_model.id}/edit", trigger: true
+    else
       @note.set 'content', new_content
       @note.save()
-    else
-      @notes_collection.create
-        content: new_content
 
     false
 
