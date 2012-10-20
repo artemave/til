@@ -39,10 +39,9 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
     if @$el.is(':visible')
       convertor = Markdown.getSanitizingConverter()
       Markdown.highlightSyntax(convertor)
-      editor = new Markdown.Editor(convertor)
 
-      editor.hooks.set "onPreviewRefresh", ->
-        prettyPrint()
+      editor = new Markdown.Editor(convertor)
+      Markdown.hookHighlightIntoEditor(editor)
 
       editor.run()
 

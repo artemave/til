@@ -3,3 +3,8 @@ Markdown.highlightSyntax = (converter) ->
     $html = $(html)
     $html.find('code').parent('pre').addClass 'prettyprint'
     $('<div>').append($html).html()
+
+Markdown.hookHighlightIntoEditor = (editor) ->
+  editor.hooks.set "onPreviewRefresh", ->
+    prettyPrint()
+

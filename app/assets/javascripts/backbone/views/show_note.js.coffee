@@ -13,11 +13,15 @@ class DevNotesApp.Views.ShowNote extends Support.CompositeView
     @note      = opts.note
     @navigate  = opts.navigate || DevNotesApp.navigate
     @convertor = opts.converter || new Markdown.Converter()
+    Markdown.highlightSyntax(@convertor)
 
   render: ->
     if @note
       content = @convertor.makeHtml(@note.get('content'))
       @$el.html(JST['notes/show'](content: content))
+
+      _.defer ->
+        prettyPrint()
     this
 
   redirect_to_edit_note: ->
