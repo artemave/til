@@ -28,7 +28,6 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
 
     if @note.isNew()
       @notes_collection.create { content: new_content }, wait: true, success: (new_model) =>
-        console.log new_model
         @navigate "notes/#{new_model.id}/edit", trigger: true
     else
       @note.set 'content', new_content
@@ -39,6 +38,11 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
   load_pagedown_editor: ->
     if @$el.is(':visible')
       convertor = Markdown.getSanitizingConverter()
+      Markdown.highlightSyntax(convertor)
       editor = new Markdown.Editor(convertor)
+
+      editor.hooks.set "onPreviewRefresh", ->
+        prettyPrint()
+
       editor.run()
 

@@ -3423,6 +3423,7 @@ sinon.fakeServer = (function () {
         addRequest: function addRequest(xhrObj) {
             var server = this;
             push.call(this.requests, xhrObj);
+
             xhrObj.onSend = function () {
                 server.handleRequest(this);
             };

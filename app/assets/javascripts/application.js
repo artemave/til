@@ -18,6 +18,7 @@
 //= require Markdown.Converter
 //= require Markdown.Sanitizer
 //= require Markdown.Editor
+//= require google-code-prettify/manifest
 //= require backbone/note
 //= require_tree ../templates
 //= require_tree .
