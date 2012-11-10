@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_filter :authorize!
+
   respond_to :json
 
   def create

@@ -6,9 +6,16 @@ When /^I view my notes/ do
   visit root_path
 end
 
-Given /^I have some notes$/ do
+Given /^I have notes$/ do
   5.times do |n|
-    Note.create! content: n
+    my_account.notes.create! content: "artem#{n}"
+  end
+end
+
+Given /^Ivan has notes$/ do
+  @ivan = User.create name: 'Ivan'
+  5.times do |n|
+    @ivan.notes.create! content: "ivan#{n}"
   end
 end
 
@@ -98,3 +105,18 @@ end
 Then /^it should not be displayed$/ do
   find('#wmd-input').text.should == ''
 end
+
+Then /^I should only see mine$/ do
+  my_account.notes.each do |note|
+    page.should have_content note.content
+  end
+
+  @ivan.notes.each do |note|
+    page.should_not have_content note.content
+  end
+end
+
+def my_account
+  @my_account ||= User.find_by_name 'artemave'
+end
+

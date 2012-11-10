@@ -7,12 +7,12 @@ Feature: view note
     Given I am signed in
 
   Scenario: view last modified note by default
-    Given I have some notes
+    Given I have notes
     And the oldest one has been updated most recently
     When I view my notes
     Then I should see the content of the oldest note
 
   Scenario: view particular note
-    Given I have some notes
+    Given I have notes
     When I choose to see one
     Then I should see its content

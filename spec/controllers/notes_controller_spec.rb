@@ -1,13 +1,27 @@
 require 'spec_helper'
 
-describe NotesController do
+describe NotesController, focus: true do
   render_views
 
-  it "creates note" do
-    assert_difference('Note.count', 1) do
+  let(:current_user) { create :user }
+
+  before do
+    sign_in current_user
+  end
+
+  describe "#create" do
+    let(:invoke_action) do
       post :create, note: { content: 'awesome note' }, format: :json
     end
-    assert_response :success
+
+    it_behaves_like 'an authorized action'
+
+    it "creates note" do
+      assert_difference('Note.count', 1) do
+        invoke_action
+      end
+      assert_response :success
+    end
   end
 
   it 'destroys note' do

@@ -7,6 +7,13 @@ Feature: view notes list
     Given I am signed in
 
   Scenario: view notes list
-    Given I have some notes
+    Given I have notes
     When I view my notes
     Then I should see a list of notes with their content
+
+  @now
+  Scenario: view only my notes
+    Given I have notes
+    And Ivan has notes
+    When I view my notes
+    Then I should only see mine
