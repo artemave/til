@@ -26,6 +26,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'quiet_assets'
   gem 'hpricot' # for html2haml
   gem 'launchy'
   gem 'awesome_print'
