@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User, focus: true do
+describe User do
   describe "#find_or_create_with_omniauth" do
     let(:auth) {{
       'provider' => 'twitter',

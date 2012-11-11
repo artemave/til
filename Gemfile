@@ -24,6 +24,7 @@ group :assets do
   gem 'haml_coffee_assets'
   gem 'execjs'
 end
+gem 'less-rails'
 
 group :test, :development do
   gem 'quiet_assets'

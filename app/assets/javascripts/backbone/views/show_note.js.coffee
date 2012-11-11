@@ -22,7 +22,7 @@ class DevNotesApp.Views.ShowNote extends Support.CompositeView
 
       _.defer ->
         prettyPrint()
-    this
+    @
 
   redirect_to_edit_note: ->
     @navigate("notes/#{@note.id}/edit", trigger: true)

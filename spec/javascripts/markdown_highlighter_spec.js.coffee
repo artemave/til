@@ -15,5 +15,4 @@ describe "Markdown.highlightSyntax()", ->
 
       $res = $('<div>').append $(converter.makeHtml(source))
 
-      expect($('pre.prettyprint', $res)).toExist()
-
+      expect($res.find('pre.prettyprint')).toHaveText(/def sleep/)

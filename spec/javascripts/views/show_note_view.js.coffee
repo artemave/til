@@ -1,16 +1,13 @@
 describe "DevNotesApp.Views.ShowNote", ->
-  it "show markdown content of a note", ->
-    content = 'This is content'
-    markdown = 'This is makrdown'
-    note = new DevNotesApp.Models.Note(content: content)
+  it "show html content of a note", ->
+    markdown = "This is markdown\n====="
+    html = '<h1>This is makrdown</h1>'
+    note = new DevNotesApp.Models.Note(content: markdown)
 
-    converter = makeHtml: @stub()
-    converter.makeHtml.withArgs(content).returns(markdown)
-
-    view = new DevNotesApp.Views.ShowNote(note: note, converter: converter)
+    view = new DevNotesApp.Views.ShowNote(note: note)
     $el = view.render().$el
 
-    expect($el).toHaveText(new RegExp(markdown))
+    expect($el.find('h1')).toHaveText("This is markdown")
 
   it 'can be switched to edit mode', ->
     navigate = @spy()

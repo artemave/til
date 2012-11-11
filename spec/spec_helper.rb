@@ -26,9 +26,6 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::Assertions
   config.include FactoryGirl::Syntax::Methods
 
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
-
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.

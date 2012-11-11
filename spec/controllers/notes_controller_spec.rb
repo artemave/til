@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NotesController, focus: true do
+describe NotesController do
   render_views
 
   let(:current_user) { create :user }
