@@ -17,7 +17,7 @@ shared_examples_for 'an authorized action' do
 
   context "user signed in" do
     before do
-      session[:user_id] = create(:user).id
+      session[:user_id] = current_user
     end
 
     it 'returns 200' do

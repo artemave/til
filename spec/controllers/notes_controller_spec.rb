@@ -20,22 +20,63 @@ describe NotesController do
       assert_difference('Note.count', 1) do
         invoke_action
       end
+
       assert_response :success
+      current_user.notes.first.content.should == 'awesome note'
+    end
+
+    it "reports validation errors" do
+      assert_no_difference('Note.count') do
+        post :create, note: {}, format: :json
+      end
+      response.status.should_not == 200
+      response.body.should include("can't be blank")
     end
   end
 
-  it 'destroys note' do
-    note = create :note
-    assert_difference('Note.count', -1) do
-      delete :destroy, id: note.id
+  describe "#update" do
+    let(:note) { create :note, content: 'old content' }
+    let(:invoke_action) do
+      put :update, id: note.id, note: { content: 'awesome note' }, format: :json
+    end
+
+    before do
+      current_user.notes = [note]
+    end
+
+    it_behaves_like 'an authorized action'
+
+    it "updates note" do
+      invoke_action
+
+      assert_response :success
+      current_user.notes.reload.first.content.should == 'awesome note'
+    end
+
+    it "reports validation errors" do
+      assert_no_difference('Note.count') do
+        put :update, id: note.id, note: { content: nil }, format: :json
+      end
+      response.status.should_not == 200
+      response.body.should include("can't be blank")
     end
   end
 
-  it "reports validation errors" do
-    assert_no_difference('Note.count') do
-      post :create, note: {}, format: :json
+  describe "#destroy" do
+    let(:note) { create :note }
+    let(:invoke_action) { delete :destroy, id: note.id }
+
+    it_behaves_like 'an authorized action'
+
+    before do
+      current_user.notes = [note]
     end
-    response.status.should_not == 200
-    response.body.should include("can't be blank")
+
+    it 'destroys note' do
+      invoke_action
+
+      current_user.notes.reload.count.should == 0
+    end
   end
+
 end
