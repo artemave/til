@@ -8,3 +8,7 @@ OmniAuth.config.add_mock(:twitter, {
     :email => 'artem@example.com',
   }
 })
+
+def my_account
+  @my_account ||= User.find_by_name 'Artem'
+end

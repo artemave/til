@@ -20,11 +20,11 @@ Given /^Ivan has notes$/ do
 end
 
 Given /^I have a note$/ do
-  Note.create! content: 'NaN'
+  my_account.notes.create! content: 'NaN'
 end
 
 Given /^I have a note with content "(.*?)"$/ do |content|
-  Note.create! content: content
+  my_account.notes.create! content: content
 end
 
 Given /^the oldest one has been updated most recently$/ do
@@ -99,7 +99,9 @@ Then /^its content should be "(.*?)"$/ do |text|
 end
 
 Then /^it should no longer exist$/ do
-  Note.count.should == 0
+  sleeping(0.1).seconds.between_tries.failing_after(20).tries do
+    Note.count.should == 0
+  end
 end
 
 Then /^it should not be displayed$/ do
@@ -114,9 +116,5 @@ Then /^I should only see mine$/ do
   @ivan.notes.each do |note|
     page.should_not have_content note.content
   end
-end
-
-def my_account
-  @my_account ||= User.find_by_name 'artemave'
 end
 

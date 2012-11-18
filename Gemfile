@@ -27,6 +27,7 @@ end
 gem 'less-rails'
 
 group :test, :development do
+  gem 'anticipate'
   gem 'quiet_assets'
   gem 'hpricot' # for html2haml
   gem 'launchy'

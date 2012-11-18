@@ -4,12 +4,13 @@ require 'cucumber/rails'
 require 'delorean'
 require_relative 'paths'
 require_relative 'helpers'
+require 'anticipate'
 
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-World(KnowsAboutPaths, Helpers)
+World(KnowsAboutPaths, Helpers, Anticipate)
 
 Capybara.default_selector = :css
 Capybara.default_driver = :chrome
