@@ -73,8 +73,10 @@ Then /^I should see a list of notes with their content$/ do
 end
 
 Then /^it should appear in the list of my notes$/ do
-  within '#notes_index' do
-    page.should have_content @something_useful
+  sleeping(0.1).seconds.between_tries.failing_after(20).tries do
+    within '#notes_index' do
+      page.should have_content @something_useful
+    end
   end
 end
 

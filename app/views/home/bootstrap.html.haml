@@ -1,7 +1,7 @@
 - if current_user
   :javascript
     $(function() {
-      window.DevNotesApp.init({notes: #{Note.all.to_json(root: false)}});
+      window.DevNotesApp.init({notes: #{current_user.notes.to_json(root: false)}});
     });
 - else
   Howdy, Stranger!
