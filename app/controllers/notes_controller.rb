@@ -15,8 +15,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    note = Note.find(params[:id])
-    note.destroy
+    current_user.notes.destroy(params[:id])
     render text: '{}'
   end
 end

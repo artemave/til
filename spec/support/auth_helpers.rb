@@ -27,3 +27,13 @@ shared_examples_for 'an authorized action' do
   end
 end
 
+shared_examples_for 'it is scoped to current user' do
+  let(:other_resource) { create resource }
+  before do
+    current_user.send("#{resource}s=", [other_resource])
+  end
+
+  it "blows up" do
+    expect { invoke_action }.to raise_error
+  end
+end

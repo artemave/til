@@ -46,6 +46,10 @@ describe NotesController do
 
     it_behaves_like 'an authorized action'
 
+    it_behaves_like 'it is scoped to current user' do
+      let(:resource) { :note }
+    end
+
     it "updates note" do
       invoke_action
 
@@ -68,15 +72,17 @@ describe NotesController do
 
     it_behaves_like 'an authorized action'
 
+    it_behaves_like 'it is scoped to current user' do
+      let(:resource) { :note }
+    end
+
     before do
       current_user.notes = [note]
     end
 
     it 'destroys note' do
       invoke_action
-
       current_user.notes.reload.count.should == 0
     end
   end
-
 end
