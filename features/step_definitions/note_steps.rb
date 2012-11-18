@@ -61,7 +61,9 @@ end
 When /^I delete it/ do
   visit root_path
   click_button 'Delete'
-  page.driver.wait_until(page.driver.browser.switch_to.alert.accept)
+  sleeping(0.1).seconds.between_tries.failing_after(20).tries do
+    page.driver.browser.switch_to.alert.accept
+  end
 end
 
 Then /^I should see a list of notes with their content$/ do
