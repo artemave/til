@@ -1,3 +1,4 @@
 %div!= @content
+%hr
 %button.edit.btn.btn-primary{type: 'submit'} Edit
 %button.delete.btn.btn-primary{type: 'submit'} Delete
