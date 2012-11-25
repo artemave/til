@@ -2,6 +2,7 @@
   :javascript
     $(function() {
       window.DevNotesApp.init({notes: #{current_user.notes.to_json(root: false)}});
+      $('.dotdotdot').dotdotdot()
     });
 - else
   Howdy, Stranger!

@@ -13,7 +13,7 @@ window.DevNotesApp =
 
   init: (opts = {}) ->
     @notesCollection = new DevNotesApp.Collections.NotesCollection(opts.notes || [])
-    
+
     router = ( opts.notes_router_factory || new DevNotesApp.Routers.NotesRouter.Factory ).create
       notes_collection: @notesCollection
 

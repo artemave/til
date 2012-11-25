@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.dotdotdot-1.5.2
 //= require twitter/bootstrap
 //= require underscore
 //= require stacktrace-min-0.3

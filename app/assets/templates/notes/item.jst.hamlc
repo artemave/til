@@ -1,1 +1,2 @@
-%td{id: @model.id + '_index_item'}= @model.get('content')
+%td{id: @model.id + '_index_item'}
+  .dotdotdot= @model.get('content')

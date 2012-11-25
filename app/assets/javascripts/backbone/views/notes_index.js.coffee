@@ -13,6 +13,8 @@ class DevNotesApp.Views.NotesIndex extends Support.CompositeView
     @renderTemplate()
     if @collection.length > 0
       @renderNotes()
+
+    $('.dotdotdot').dotdotdot()
     @
 
   renderTemplate: ->
