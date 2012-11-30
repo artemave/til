@@ -34,6 +34,10 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pry'
   gem 'pry-doc'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'pry-rescue'
   gem 'turn', '~> 0.8.3', :require => false
   gem 'jasminerice'
   gem 'delorean'
