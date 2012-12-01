@@ -1,2 +1,2 @@
 %li
-  %a{href: '#new'} New
+  %a.btn.btn-new.btn-mini{href: '#new'} New

@@ -1,6 +1,5 @@
+-# %button.btn.btn-new.btn-mini{type: 'submit'}= if @note.isNew() then "Create" else "Save"
 .wmd-panel
   #wmd-button-bar
   %textarea#wmd-input.wmd-input= @note.get('content')
 #wmd-preview.wmd-panel.wmd-preview
-%hr
-%button.btn.btn-primary{type: 'submit'}= if @note.isNew() then "Create" else "Save"

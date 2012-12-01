@@ -45,3 +45,7 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
 
       editor.run()
 
+      button_label = if @note.isNew() then "Create" else "Save"
+      submit_button = $("<button type='submit' class='btn btn-mini btn-new'>#{button_label}</button>")
+      $('#wmd-button-row').append($('<li class="wmd-button" style="right: 8px;">').append(submit_button))
+
