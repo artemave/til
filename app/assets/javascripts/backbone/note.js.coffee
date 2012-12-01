@@ -9,6 +9,7 @@ window.DevNotesApp =
   Collections: {}
   Routers: {}
   Views: {}
+  Notifications: _.extend({}, Backbone.Events)
   bodySelector: '#main .row'
 
   init: (opts = {}) ->

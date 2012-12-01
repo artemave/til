@@ -1,3 +1,7 @@
 .dotdotdot {
   height: 20px;
 }
+
+.selected {
+  background-color: #dff0d8;
+}

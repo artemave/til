@@ -31,7 +31,7 @@ class DevNotesApp.Routers.NotesRouter extends Support.SwappingRouter
   show: (id) ->
     show_note_view = @show_note_view_factory.create(@notes_collection.get(id))
     @swap(show_note_view)
-  
+
   edit: (id) ->
     edit_note_view = @note_form_view_factory.createEdit(@notes_collection.get(id))
     @swap(edit_note_view)

@@ -1,4 +1,4 @@
-%table#notes_index.table
+%table#notes_index.table-hover.table
   %thead
     %tr
       %th Notes

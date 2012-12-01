@@ -15,6 +15,7 @@ class DevNotesApp.Views.NotesIndex extends Support.CompositeView
       @renderNotes()
 
     $('.dotdotdot').dotdotdot()
+    DevNotesApp.Notifications.trigger 'select_row'
     @
 
   renderTemplate: ->

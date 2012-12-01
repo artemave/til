@@ -7,10 +7,20 @@ class DevNotesApp.Views.NotesIndexItem extends Support.CompositeView
   initialize: (opts = {}) ->
     @model = opts.model
     @navigate = opts.navigate || DevNotesApp.navigate
+    _.bindAll(@, 'select_row')
+    DevNotesApp.Notifications.on 'select_row', @select_row
 
   render: ->
     $(@el).html(JST['notes/item'](model: @model))
-    this
+    @
 
   redirect_to_show_note: ->
     @navigate("notes/#{@model.id}", trigger: true)
+    DevNotesApp.Notifications.trigger 'select_row', @model.id
+
+  select_row: (note_id) ->
+    if @model.id is (note_id or DevNotesApp.currentSelectedNote)
+      DevNotesApp.currentSelectedNote = @model.id
+      $(@el).addClass 'selected'
+    else
+      $(@el).removeClass 'selected'
