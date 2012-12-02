@@ -33,26 +33,20 @@ describe 'DevNotesApp.Routers.NotesRouter', ->
       note_form_view = { render: @stub().returns(el: 'form') }
       note_form_view_factory = { create: @stub().returns(note_form_view) }
 
-      spyOnEvent($(note_form_view), 'load_pagedown_editor')
-
       router = new DevNotesApp.Routers.NotesRouter(note_form_view_factory: note_form_view_factory, el: '#sandbox')
       router.new()
 
       expect($('#sandbox')).toHaveText(/form/)
-      expect('load_pagedown_editor').toHaveBeenTriggeredOn($(note_form_view))
 
   describe '#edit', ->
     it 'displays edit note form', ->
       note_form_view = { render: @stub().returns(el: 'form') }
       note_form_view_factory = { createEdit: @stub().withArgs(@note).returns(note_form_view) }
 
-      spyOnEvent($(note_form_view), 'load_pagedown_editor')
-
       router = new DevNotesApp.Routers.NotesRouter(note_form_view_factory: note_form_view_factory, el: '#sandbox', notes_collection: @notes)
       router.edit(1)
 
       expect($('#sandbox')).toHaveText(/form/)
-      expect('load_pagedown_editor').toHaveBeenTriggeredOn($(note_form_view))
 
   describe '#show', ->
     it 'shows note content', ->

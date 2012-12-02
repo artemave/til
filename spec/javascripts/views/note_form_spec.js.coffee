@@ -1,20 +1,36 @@
 describe 'DevNotesApp.Views.NoteForm', ->
-  describe 'New note', ->
+  load_pagedown_editor = null
+  $sandbox             = null
 
+  beforeEach ->
+    setFixtures sandbox()
+    $sandbox = $('#sandbox')
+
+    sinon.stub _, 'defer', (callback) ->
+      load_pagedown_editor = callback
+
+  afterEach ->
+    _.defer.restore()
+
+  describe 'New note', ->
     it 'shows blank editor form', ->
       new_note = new DevNotesApp.Views.NoteForm()
-      $el = $(new_note.render().el)
 
-      expect($el).toContain('textarea')
-      expect($el.find('button[type="submit"]')).toHaveText(/Create/)
+      $sandbox.html new_note.render().el
+      load_pagedown_editor()
+
+      expect($sandbox).toContain('textarea')
+      expect($sandbox.find('button[type="submit"]')).toHaveText(/Create/)
 
     it 'creates new note', ->
       notes_collection = create: @spy(), get: ->
       note_form = new DevNotesApp.Views.NoteForm(notes_collection: notes_collection)
-      $el = $(note_form.render().el)
 
-      $el.find('textarea').val('content')
-      $el.find('button:contains("Create")').click()
+      $sandbox.html note_form.render().el
+      load_pagedown_editor()
+
+      $sandbox.find('textarea').val('content')
+      $sandbox.find('button:contains("Create")').click()
 
       expect(notes_collection.create).toHaveBeenCalledWith(content: 'content')
 
@@ -24,11 +40,12 @@ describe 'DevNotesApp.Views.NoteForm', ->
         navigate: navigate,
         notes_collection: new DevNotesApp.Collections.NotesCollection
 
-      $el = $(note_form.render().el)
+      $sandbox.html note_form.render().el
+      load_pagedown_editor()
 
-      $el.find('textarea').val('content')
-      $el.find('button:contains("Create")').click()
-        
+      $sandbox.find('textarea').val('content')
+      $sandbox.find('button:contains("Create")').click()
+
       @server.respond [
         201,
         { "Content-Type": "application/json" },
@@ -41,8 +58,11 @@ describe 'DevNotesApp.Views.NoteForm', ->
     it 'shows editor form with contents of edited note', ->
       form_factory = new DevNotesApp.Views.NoteForm.Factory
       note_form = form_factory.createEdit(new DevNotesApp.Models.Note(content: 'note content'))
-      $el = $(note_form.render().el)
-      expect($el.find('textarea')).toHaveText(/note content/)
+
+      $sandbox.html note_form.render().el
+      load_pagedown_editor()
+
+      expect($sandbox.find('textarea')).toHaveText(/note content/)
 
     it 'updates existing note', ->
       note = new DevNotesApp.Models.Note(content: 'old text')
@@ -55,9 +75,11 @@ describe 'DevNotesApp.Views.NoteForm', ->
       form_factory = new DevNotesApp.Views.NoteForm.Factory()
       note_form    = form_factory.createEdit(note, notes_collection: notes_collection)
 
-      $el = $(note_form.render().el)
-      $el.find('textarea').val('new text')
-      $el.find('button:contains("Save")').click()
+      $sandbox.html note_form.render().el
+      load_pagedown_editor()
+
+      $sandbox.find('textarea').val('new text')
+      $sandbox.find('button:contains("Save")').click()
 
       expect(note.set).toHaveBeenCalledWith('content', 'new text')
       expect(note.save).toHaveBeenCalled()

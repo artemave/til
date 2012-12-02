@@ -10,7 +10,6 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
   className: 'span8'
 
   events:
-    "load_pagedown_editor": "load_pagedown_editor"
     "click button": "save"
 
   initialize: (opts = {}) ->
@@ -21,6 +20,7 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
 
   render: ->
     @$el.html(JST['notes/form'](note: @note))
+    @load_pagedown_editor()
     @
 
   save: ->
@@ -36,7 +36,7 @@ class DevNotesApp.Views.NoteForm extends Support.CompositeView
     false
 
   load_pagedown_editor: ->
-    if @$el.is(':visible')
+    _.defer =>
       convertor = Markdown.getSanitizingConverter()
       Markdown.highlightSyntax(convertor)
 
