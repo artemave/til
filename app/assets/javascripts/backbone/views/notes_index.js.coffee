@@ -14,7 +14,8 @@ class DevNotesApp.Views.NotesIndex extends Support.CompositeView
     if @collection.length > 0
       @renderNotes()
 
-    $('.dotdotdot').dotdotdot()
+    _.defer ->
+      $('.dotdotdot').dotdotdot()
     DevNotesApp.Notifications.trigger 'select_row'
     @
 
