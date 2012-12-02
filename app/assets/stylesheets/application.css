@@ -5,5 +5,5 @@
  *= require pagedown
  *= require prettify
  *= require_self
- *= require_tree . 
+ *= require_tree .
 */

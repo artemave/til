@@ -27,6 +27,7 @@ class DevNotesApp.Routers.NotesRouter extends Support.SwappingRouter
     new_note_view = @note_form_view_factory.create()
     @swap(new_note_view)
     $(new_note_view).trigger('load_pagedown_editor')
+    DevNotesApp.Notifications.trigger 'select_row', 'none'
 
   show: (id) ->
     show_note_view = @show_note_view_factory.create(@notes_collection.get(id))
