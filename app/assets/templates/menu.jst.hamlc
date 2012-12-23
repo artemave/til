@@ -1,2 +1,4 @@
 %li
   %a.btn.btn-new.btn-mini{href: '#new'} New
+%form.navbar-search.pull-left
+  %input.search-query{type: 'text', placeholder: 'Search notes', name: 'notes-search'}
