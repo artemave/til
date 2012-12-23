@@ -18,6 +18,7 @@ gem 'pg'
 group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'therubyracer' # twitter-bootstrap-rails dependency
+  gem 'libv8', '~> 3.11.8' # therubyracer dependency
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
