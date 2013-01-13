@@ -2,7 +2,7 @@ Given /^there exist notes with the following content:$/ do |table|
   table.raw.flatten.each do |content|
     my_account.notes.create! content: content
   end
-  # so that they appear
+  # reload page so that they appear
   visit root_path
 end
 
