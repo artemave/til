@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'thin'
 gem 'pg'
+gem 'newrelic_rpm'
 #gem "active_model_serializers"
 
 # Gems used only for assets and not required
