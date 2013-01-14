@@ -9,7 +9,6 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'thin'
 gem 'pg'
 gem 'newrelic_rpm'
 #gem "active_model_serializers"
@@ -29,6 +28,7 @@ end
 gem 'less-rails'
 
 group :test, :development do
+  gem 'thin'
   gem 'anticipate'
   gem 'quiet_assets'
   gem 'hpricot' # for html2haml
@@ -57,7 +57,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
