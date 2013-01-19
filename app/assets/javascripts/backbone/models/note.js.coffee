@@ -11,3 +11,7 @@ class DevNotesApp.Collections.NotesCollection extends Backbone.Collection
 
   last_modified_note: ->
     @last()
+
+  search: (search_term) ->
+    @filter (note) ->
+      note.get('content').match new RegExp(search_term)

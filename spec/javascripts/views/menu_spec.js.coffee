@@ -3,9 +3,23 @@ describe 'DevNotesApp.MenuView', ->
     setFixtures sandbox
       id: 'note_button_bar'
 
-  it "renders new button", ->
     view = new DevNotesApp.Views.Menu()
-    $el = $(view.render().el)
+    @$el = $(view.render().el)
 
-    expect($el).toContain('a')
-    expect($el).toHaveText(/New/)
+  it "renders new button", ->
+    expect(@$el).toContain('a')
+    expect(@$el).toHaveText(/New/)
+
+  it 'renders search input', ->
+    expect(@$el).toContain('.search-query')
+
+  it 'search triggers "search" event', ->
+    search_string = ''
+    DevNotesApp.Notifications.on 'search', (query) ->
+      search_string = query
+
+    @$el.find('input.search-query').val('ab').trigger('input')
+
+    waitsFor ->
+      search_string == 'ab'
+    , 'search to be triggered', 500

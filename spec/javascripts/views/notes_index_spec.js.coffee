@@ -17,14 +17,10 @@ describe "DevNotesApp.Views.NotesIndex", ->
 
   describe 'automatically rerenders', ->
     it 'on create', ->
-      @$el = $(@view.el)
-
       @notes.add content: 'next time I will try bourbon neat instead of twitter bootstrap'
       expect(@$el).toHaveText(/next time I will try bourbon neat instead of twitter bootstrap/)
 
     it 'on edit', ->
-      @$el = $(@view.el)
-
       note = @notes.get(1)
       note.set('content', 'now I think the opposite')
       note.save()
@@ -33,7 +29,11 @@ describe "DevNotesApp.Views.NotesIndex", ->
       expect(@$el).toHaveText(/now I think the opposite/)
 
     it 'on destroy', ->
-      @$el = $(@view.el)
-
       @notes.first().destroy()
       expect(@$el).not.toHaveText(/sparrow is an excellent/)
+
+    it 'on search', ->
+      DevNotesApp.Notifications.trigger 'search', 'alfred'
+
+      expect(@$el).not.toHaveText(/sparrow is an excellent/)
+      expect(@$el).toHaveText(/alfred is/)

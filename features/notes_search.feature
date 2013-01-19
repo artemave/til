@@ -1,4 +1,4 @@
-@wip @javascript
+@javascript
 Feature: notes search
   In order to access notes quickly
   As an impatient person
